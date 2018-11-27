@@ -15,7 +15,8 @@ const styles = theme => ({
         color: theme.palette.text.secondary,
 
 
-    }, paper2: {
+    },
+    paper2: {
         margin: theme.spacing.unit * 2,
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
@@ -40,7 +41,7 @@ function AutoGrid(props) {
                         <ReactPlayer url='https://www.youtube.com/watch?v=x3bfa3DZ8JM' playing controls width="400" />
                     </Paper>
                     <Paper className={classes.paper}>
-                        Subject : INT202<br/>
+                        Subject : INT202<br />
                         Teacher : Olarn
                     </Paper>
                 </Grid>
