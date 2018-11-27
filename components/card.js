@@ -20,11 +20,17 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const styles = theme => ({
   card: {
     maxWidth: 400,
+    margin: theme.spacing.unit * 2,
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
+  paper: {
+    textAlign: 'center',
+
+
+},
 
 
   avatar: {
@@ -34,10 +40,6 @@ const styles = theme => ({
 
 class RecipeReviewCard extends React.Component {
   state = { expanded: false };
-
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
-  };
 
   render() {
     const { classes } = this.props;
@@ -57,10 +59,10 @@ class RecipeReviewCard extends React.Component {
         <CardMedia
           className={classes.media}
           image="https://image.ibb.co/dG2XCA/boy.png"
-          title="Paella dish"
+          title="INT202"
         />
-        <CardContent>
-
+        <CardContent className={classes.paper}>
+            INT 202 EP 1
         </CardContent>
 
 
