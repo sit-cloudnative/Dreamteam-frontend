@@ -1,23 +1,13 @@
 import React from 'react'
 import Login from '../../components/login'
-import AppBar from '../../components/appbar'
-import SearchBar from 'material-ui-search-bar'
+import NavBar from '../../components/navbar'
 
 
 export default class index extends React.Component {
     render() {
         return (<div>
-            <AppBar></AppBar>
+            <NavBar></NavBar>
             <Login></Login>
-
-            <SearchBar
-                onChange={() => console.log('onChange')}
-                onRequestSearch={() => console.log('onRequestSearch')}
-                style={{
-                    margin: '0 auto',
-                    maxWidth: 800
-                }}
-            />
         </div>)
     }
 }
