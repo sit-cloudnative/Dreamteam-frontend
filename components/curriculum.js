@@ -12,12 +12,31 @@ export default class Curriculum extends React.Component {
         }
         // this.getSubjectList = this.getSubjectList.bind(this)
     }
+
+    async componentDidMount() {
+        let { data } = await axios.get('/curriculums')
+        this.setState({
+            curriculum: { data }.data
+        })
+    }
+
+    async getSubjectList(targetCurriculumId) {
+        const { data } = await axios.get('/curriculum/' + targetCurriculumIds)
+        this.setState({ subjectList: data })
+    }
+
+    redirectToVideoListPage(targetSubjectId) {
+        Router.push({
+            pathname: '/videos',
+            query: { subject_id: targetSubjectId }
+        })
+    }
     render() {
         const cardStyle = {
             marginTop: '100px'
         };
         const cardtitleStyle = {
-            fontSize:'42px',
+            fontSize: '42px',
             textAlign: 'center'
         };
         return (
@@ -26,6 +45,7 @@ export default class Curriculum extends React.Component {
                     <Col sm="6">
                         <Card style={cardStyle} body>
                             <CardTitle style={cardtitleStyle}><i class="fas fa-graduation-cap" fa-3x></i> Curriculum</CardTitle>
+                            
                             <Button className="btn-dark"><i class="fas fa-graduation-cap fa-2x"></i>  B.Sc.IT Students</Button>
                         </Card>
                     </Col>
