@@ -1,27 +1,57 @@
 import React from 'react';
 import { Card, CardBody, Button, CardTitle, CardText, CardImg } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
-const video = (props) => {
+import ReactPlayer from 'react-player'
+
+const card = (props) => {
+    const videoStyle = {
+        height: '350px',
+        marginLeft: '25px',
+        marginTop: '15px'
+
+    };
+    const videoStyle2 = {
+        height: '300px',
+        marginLeft: '7px',
+        marginTop: '10px',
+        marginRight: '20px'
+
+    };
+    const cardStyle = {
+        marginTop: '30px'
+    };
     return (
-        <Container>
+        <Container fluid>
             <Row>
-                <Col xs="4"></Col>
-                <Col xs="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://image.ibb.co/dG2XCA/boy.png" alt="Card image cap" />
+                <Col xs="3"></Col>
+                <Col xs="6">
+                    <Card style={cardStyle}>
+                        <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' playing controls style={videoStyle} />
+
                         <CardBody>
-                            <CardTitle>Card Title</CardTitle>
-                            <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+                            <hr />
+                            <CardTitle>INT202</CardTitle>
+                            <CardText>Teacher :</CardText>
                             <CardText>
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted">Date : </small>
+                            </CardText>
+                        </CardBody>
+                    </Card>
+                </Col>
+                <Col xs="3">
+                    <Card style={cardStyle}>
+                        <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' controls style={videoStyle2} width="50" />
+                        <CardBody>
+                            <CardTitle>Video Details</CardTitle>
+                            <CardText>
+                                <small className="text-muted">Date :</small>
                             </CardText>
                         </CardBody>
                     </Card></Col>
-                <Col xs="4"></Col>
 
 
             </Row>
         </Container>);
 };
 
-export default video;
+export default card;
