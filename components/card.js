@@ -19,3 +19,4 @@ const SubjectCard = (props) => {
 };
 
 export default SubjectCard;
+

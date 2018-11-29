@@ -16,6 +16,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-jss": "^8.6.1",
+    "react-player": "^1.7.0",
     "reactstrap": "^6.5.0",
     "styled-components": "^4.1.1"
   }
