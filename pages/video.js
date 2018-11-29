@@ -1,10 +1,13 @@
 import React from 'react'
-import Video from '../components/video'
+import Card from '../components/card'
+import NavBar from '../components/navbar'
 
 export default class video extends React.Component {
     render() {
         return (<div>
-            <Video></Video>
+            <NavBar></NavBar>
+
+            <Card></Card>
         </div>)
     }
 }
