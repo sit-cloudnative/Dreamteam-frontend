@@ -8,7 +8,7 @@ export default class Example extends React.Component {
         <thead>
           <tr>
             <th>#</th>
-            <th>Materail</th>
+            <th>Material</th>
             <th>Create At</th>
           </tr>
         </thead>
