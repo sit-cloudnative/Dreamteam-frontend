@@ -7,7 +7,7 @@ const card = (props) => {
     const videoStyle = {
         height: '350px',
         marginLeft: '25px',
-        marginTop: '15px'
+        marginTop: '5px'
 
     };
     const videoStyle2 = {
@@ -20,17 +20,24 @@ const card = (props) => {
     const cardStyle = {
         marginTop: '100px'
     };
+    const cardtitleStyle = {
+        marginTop: '10px',
+        fontSize: '30px',
+        textAlign: 'left',
+        marginLeft: '50px'
+    };
     return (
         <Container fluid>
             <Row>
                 <Col xs="3"></Col>
                 <Col xs="6">
                     <Card style={cardStyle}>
+                        <CardTitle style={cardtitleStyle}><i class="fas fa-video"></i> INT202</CardTitle>
                         <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' playing controls style={videoStyle} />
 
                         <CardBody>
                             <hr />
-                            <CardTitle>INT202</CardTitle>
+
                             <CardText>Teacher :</CardText>
                             <CardText>
                                 <small className="text-muted">Date : </small>
@@ -40,9 +47,10 @@ const card = (props) => {
                 </Col>
                 <Col xs="3">
                     <Card style={cardStyle}>
-                        <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' controls style={videoStyle2} width="50" />
+                        <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' controls style={videoStyle2} width="50" height="50" />
                         <CardBody>
-                            <CardTitle>Video Details</CardTitle>
+                            <hr />
+                            <CardTitle >INT 202 EP.2</CardTitle>
                             <CardText>
                                 <small className="text-muted">Date :</small>
                             </CardText>
