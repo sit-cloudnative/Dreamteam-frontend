@@ -5,10 +5,9 @@ import { Card, CardImg, CardText, CardBody,
 const SubjectCard = (props) => {
   return (
     <div>
-      <Card>
+      <Card style={{marginBottom:'11px'}}>  
         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
         <CardBody>
-          <CardTitle>Card title</CardTitle>
           <CardSubtitle>ACHARA TRAN-U-RAIKUL</CardSubtitle>
           <CardText>28 NOVEMBER 2018</CardText>
           <Button>Button</Button>
