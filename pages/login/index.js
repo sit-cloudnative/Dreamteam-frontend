@@ -1,11 +1,11 @@
 import React from 'react'
 import Login from '../../components/login'
+import NavBar from '../../components/navbar'
 
-export default class extends React.Component{
+
+export default class index extends React.Component {
     render() {
-        return(<div>
-            <h1>Login</h1>
-            <Login></Login>
+        return (<div>
         </div>)
     }
 }
