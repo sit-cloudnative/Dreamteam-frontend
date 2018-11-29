@@ -18,7 +18,7 @@ const card = (props) => {
 
     };
     const cardStyle = {
-        marginTop: '30px'
+        marginTop: '100px'
     };
     return (
         <Container fluid>
