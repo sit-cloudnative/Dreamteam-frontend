@@ -5,13 +5,11 @@ import {
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import NavBar from '../../components/navbar'
-// import Card from '../../components/carduser'
-
+import Template from '../../layout/template'
 export default class Index extends React.Component {
     render() {
-        return (<div>
-            <NavBar></NavBar>
+        return (
+        <Template>
            <div className='container'>
                 <Row style={{paddingTop:'20px'}}>
                     <Col xs="4" style={{textAlign:'center'}}>
@@ -19,7 +17,7 @@ export default class Index extends React.Component {
                         <h3>Tanapat Choochot</h3>
                             <h6>@59130500128</h6>
                             <hr/>
-                            <button type="button" class="btn btn-outline-danger">My Favorite Subjects</button>
+                            <button type="button" className="btn btn-outline-danger">My Favorite Subjects</button>
                             
                     </Col>
                     <Col xs='7'>
@@ -59,9 +57,7 @@ export default class Index extends React.Component {
                         </Card>
                     </Col>
                 </Row>
-           </div>
-
-
-        </div >)
+            </div>
+        </Template >)
     }
 }

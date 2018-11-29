@@ -1,57 +1,22 @@
 import React from 'react';
-import { Card, CardBody, Button, CardTitle, CardText, CardImg } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
-import ReactPlayer from 'react-player'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-const card = (props) => {
-    const videoStyle = {
-        height: '350px',
-        marginLeft: '25px',
-        marginTop: '15px'
-
-    };
-    const videoStyle2 = {
-        height: '300px',
-        marginLeft: '7px',
-        marginTop: '10px',
-        marginRight: '20px'
-
-    };
-    const cardStyle = {
-        marginTop: '30px'
-    };
-    return (
-        <Container fluid>
-            <Row>
-                <Col xs="3"></Col>
-                <Col xs="6">
-                    <Card style={cardStyle}>
-                        <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' playing controls style={videoStyle} />
-
-                        <CardBody>
-                            <hr />
-                            <CardTitle>INT202</CardTitle>
-                            <CardText>Teacher :</CardText>
-                            <CardText>
-                                <small className="text-muted">Date : </small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col xs="3">
-                    <Card style={cardStyle}>
-                        <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' controls style={videoStyle2} width="50" />
-                        <CardBody>
-                            <CardTitle>Video Details</CardTitle>
-                            <CardText>
-                                <small className="text-muted">Date :</small>
-                            </CardText>
-                        </CardBody>
-                    </Card></Col>
-
-
-            </Row>
-        </Container>);
+const SubjectCard = (props) => {
+  return (
+    <div>
+      <Card>
+        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+        <CardBody>
+          <CardTitle>Card title</CardTitle>
+          <CardSubtitle>ACHARA TRAN-U-RAIKUL</CardSubtitle>
+          <CardText>28 NOVEMBER 2018</CardText>
+          <Button>Button</Button>
+        </CardBody>
+      </Card>
+    </div>
+  );
 };
 
-export default card;
+export default SubjectCard;
+

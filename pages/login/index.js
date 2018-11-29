@@ -6,6 +6,7 @@ import NavBar from '../../components/navbar'
 export default class index extends React.Component {
     render() {
         return (<div>
+            
         </div>)
     }
 }
