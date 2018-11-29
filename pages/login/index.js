@@ -1,5 +1,6 @@
 import React from 'react'
-import {userService} from '../../util/axios'
+import { Jumbotron, Container, Row, Col, Button } from 'reactstrap'
+import { userService } from '../../util/axios'
 import Head from 'next/head';
 import Router from 'next/router'
 
@@ -28,27 +29,19 @@ export default class extends React.Component {
                 password: this.state.password
             },
             url: '/login',
-            headers:{
-                'Access-Control-Allow-Origin' : '*'
+            headers: {
+                'Access-Control-Allow-Origin': '*'
             }
-            
+
         })
         console.log('****************')
         console.log(data)
         localStorage.setItem('token', data.token)
         localStorage.setItem('profileId', data.username)
         let localdata = localStorage.getItem('profileId')
-        // if (typeof data.username == undefined) {
-        //     Router.push('/login')
-        //     this.setState({ message: 'wrong username or id' })
-        //     console.log('goto /login')
-        // } else {
-        //     Router.push('/index')
-        // }
-
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.axios = userService(localStorage.getItem('token'))
     }
 
@@ -61,38 +54,56 @@ export default class extends React.Component {
                     <link href="/static/style.css" rel="stylesheet" />
 
                 </Head>
-                <div className="d-flex justify-content-center h-100">
-                    <div className="card" style={{ justifyContent: 'center', display: 'flex' }}>
-                        <div className="card-header">
-                            <h3>Sign In</h3>
+                <Row style={{ paddingTop: '-60px', marginBottom: '-80px' }}>
+                    <Col sm="12" md={{ size: 6, offset: 3 }} style={{ textAlign: 'center' }}>
+                        <Jumbotron style={{ backgroundColor: 'white' }}>
+                            <h4 className="display-4">Dream-Learning</h4>
+                            <p className="lead">E-learning of your dreams</p>
+                            <hr />
+                        </Jumbotron>
+
+                    </Col>
+
+                </Row>
+
+                <div className="d-flex justify-content-center h-100" style={{ paddingTop: 'px' }}>
+                    <div className="card" style={{ width: '350px', boxShadow: '2px', justifyContent: 'center', display: 'flex', marginBottom: '20px', backgroundColor: '#f7f7f7' }}>
+                        <div style={{ backgroundColor: '#f7f7f7', textAlign: 'center', paddingTop: '10px' }}>
+                            <img src="../../static/images/logo/user-1.png" width="130" height="121" />
                         </div>
-                        <div className="card-body">
+                        <div className="card-body" style={{ backgroundColor: '#f7f7f7' }}>
                             <div style={{ color: 'red' }}>{this.state.message}</div>
+
                             <form>
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" onChange={(e) => { this.setState({ username: e.target.value }) }} className="form-control" placeholder="username" name="username" />
+                                    <input type="text" onChange={(e) => { this.setState({ username: e.target.value }) }} className="form-control" placeholder="Username" name="username" />
                                 </div>
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" onChange={(e) => { this.setState({ password: e.target.value }) }} className="form-control" placeholder="password" name="password" />
+                                    <input type="password" onChange={(e) => { this.setState({ password: e.target.value }) }} className="form-control" placeholder="Password" name="password" />
                                 </div>
                                 <div className="form-group">
-                                    <button className="btn float-right login_btn" onClick={this.handleLogin} >Login</button>
+                                    <Row>
+                                        <Col style={{ textAlign: 'center', backgroundColor: '#f7f7f7' }}>
+                                            <Button type="submit" color="primary" size="lg" block>Sign in</Button>
+                                        </Col>
+                                    </Row>
                                 </div>
                             </form>
                         </div>
                         <div className="card-footer">
                             <div className="d-flex justify-content-center links">
-                                <a href="https://github.com/sit-cloudnative/DreamTeam" target="_blank">
-                                    <i className="fa fa-github  white-text"> Our GitHub</i>
+                                <Row>
+                                    <a href="https://github.com/sit-cloudnative/DreamTeam" target="_blank">
+                                        <i class="fab fa-github"></i> Dreamteam's GitHub
                                 </a>
-                                &#9400; DreamTeam & INT491 CloudNative <br />All Rights Reserved
-				            </div>
+                                </Row>
+                            </div>
                         </div>
                     </div>
                 </div>
