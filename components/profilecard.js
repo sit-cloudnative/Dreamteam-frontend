@@ -4,8 +4,7 @@ import { Row, Col } from 'reactstrap';
 
 
 export default ({profile}) => (
-    <Card>
-        {/* <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" /> */}
+    <Card className="profileCard">
         <CardBody>
             <h3>My Profile</h3>
             <hr />
