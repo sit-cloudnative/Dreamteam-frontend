@@ -1,12 +1,14 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { materialService } from '../util/axios'
+import Loading from 'react-loading'
 
 class ModalExample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        modal: false
+            modal: false,
+            isLoad: false
         };
 
         this.toggle = this.toggle.bind(this);
@@ -18,11 +20,17 @@ class ModalExample extends React.Component {
         });
     }
     async onDeleteMaterial(id) {
+        this.setState({
+            isLoad: true
+        })
         const token = ''
         this.axios = materialService(token)
         const { data } = await this.axios.delete(`/file/${id}`)
         console.log(data)
         this.toggle()
+        this.setState({
+            isLoad: false
+        })
         window.location.reload()
     }
 
@@ -38,6 +46,9 @@ class ModalExample extends React.Component {
                 Do you want to delete {this.props.material.fileName} from {this.props.material.subjectCode}
             </ModalBody>
             <ModalFooter>
+                {
+                    (this.state.isLoad)? <Loading type='spokes' color='#0091ac' height='40px' width='40px'/>: ''
+                }
                 <Button color="danger" onClick={() => {this.onDeleteMaterial(this.props.material.id)}}>DELETE</Button>{' '}
                 <Button color="secondary" onClick={this.toggle}>Cancel</Button>
             </ModalFooter>
