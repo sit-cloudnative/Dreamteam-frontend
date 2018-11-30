@@ -35,14 +35,11 @@ export default class extends React.Component {
             })
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('profileId', response.data.username)
-            console.log(response)
         }catch(e){
-            console.log(e)
-                // response.status=404
-            }
-        console.log('****************')
-        console.log(response)
-       
+            response.status = 404
+            response.data = {}
+            this.setState({message:'username or password is wrong'})
+        }
         if(response.status == 200){
             Router.push('/user')
         }else if(response.status == 404){
