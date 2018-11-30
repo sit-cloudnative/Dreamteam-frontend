@@ -17,18 +17,21 @@ export default class MyDocument extends Document {
         </Head>
         <style jsx global>{`
           body { 
-            background: #f7f7f7;
+            background-color: #F7F9FB;
             font: 11px menlo;
+          }
+          .navbar {
+            background-color: #31708E;
           }
           .navbar a {
             border-radius: 20%;           
           }
           .navbar a:hover {
-            background: #0091ac;
+            background: #5085A5;
             opacity: 80%;
             border-radius: 5%;
           }
-          div.videoCard :hover {
+          .videoCard :hover {
             webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
             moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
             box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
@@ -47,6 +50,7 @@ export default class MyDocument extends Document {
           height: 30px;
           box-sizing: border-box;
           border: 2px solid #ccc;
+          border-color: #687864;
           border-radius: 10em;
           font-size: 16px;
           background-color: white;
