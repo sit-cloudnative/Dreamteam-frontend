@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table ,Button  } from 'reactstrap';
 import { materialService } from '../util/axios'
+import DeleteMaterialModal from './deleteMaterialModal'
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class Example extends React.Component {
       materials: data
     })
   }
+
   render() {
     const materials = this.state.materials.map((material, index) => {
       return (
@@ -27,9 +29,7 @@ export default class Example extends React.Component {
           <td>{material.fileName}</td>
           <td>{material.createdAt}</td>
           <td>
-            <Button color="danger">
-              <i className="fas fa-trash-alt" style={{color:'white'}}></i>
-            </Button>
+            <DeleteMaterialModal material={material}/>
           </td>
         </tr>
       )
