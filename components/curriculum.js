@@ -72,7 +72,7 @@ export default class Curriculum extends React.Component {
         }
 
         return (
-            <Container fluid>
+            <Container style={{marginTop:'11px'}} fluid>
                 <Row>   
                     <Col sm="1"></Col>
                     <Col sm="5">

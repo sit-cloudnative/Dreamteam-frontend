@@ -32,7 +32,7 @@ export default ({profile}) => (
                 </FormGroup>
                 <Row>
                     <Col style={{ textAlign: 'center' }}>
-                        <Button color="primary" size="lg" block>Back to Home</Button>
+                        <Button className="backToHome"  size="lg" block>Back to Home</Button>
                     </Col>
                 </Row>
             </Form>

@@ -30,25 +30,13 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="0091ac" light expand="md" style={{ 
-        backgroundColor: '#0091ac', 
-        WebkitBoxShadow: '0px 2px 11px -3px rgba(0,0,0,0.75)', 
-        MozBoxShadow: '0px 2px 11px -3px rgba(0,0,0,0.75)', 
-        boxShadow: '0px 2px 11px -3px rgba(0,0,0,0.75)',
-        position: 'fixed',
-        top:'0',
-        width:'100%',
-        zIndex:'10'
-      }} >
+        <Navbar color="0091ac" light expand="md">
           <a className="navbar-brand" href="/" style={{ color: 'white' }}><i className="fa fa-cloud" style={{ fontSize: 18, color: 'white' }}></i> Dream-Learning </a>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Looking for..." />
-              </NavItem>
-              <NavItem>
-                <button type="button" className="btn" style={{backgroundColor: '#0d386e', color: '#e4e4e4' }}>Search</button>
+              <NavItem style={{ paddingTop: '5.5px', paddingRight: '200px' }}>
+                <input className="searchBar" type="text" name="search" placeholder="Search..." />
               </NavItem>
               <NavItem>
                 <NavLink href="/" style={{ color: '#e4e4e4' }}>Curriculums</NavLink>
@@ -68,7 +56,17 @@ export default class NavBar extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="/" style={{ color: '#e4e4e4' }}>Account</NavLink>
+                <div class="dropdown">
+                  <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img style={{ borderRadius: '50%', marginTop: '6px' }} src="../../static/images/logo/user-1.png" width="30" height="28" />
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ left: '-103px' }} >
+                    <a class="dropdown-item" href="#">My Profile</a>
+                    <div class="dropdown-divider" />
+                    <a class="dropdown-item" href="#">Log Out</a>
+                  </div>
+                </div>
+
               </NavItem>
             </Nav>
           </Collapse>

@@ -1,9 +1,10 @@
 import React from 'react'
-import Card from '../../components/card'
 import Template from '../../layout/template'
 import Cardlist from '../../components/cardlist'
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { withRouter } from 'next/router'
+import {videoService} from '../../util/axios'
+import Spiner from '../../components/loadingcomponent'
 
 let subjectTitle = ''
 
@@ -11,15 +12,25 @@ let subjectTitle = ''
      constructor(props){
          super(props)
          this.state = {
-             videoTitle:''
-         }
-         this.changeVideoTitle = this.changeVideoTitle.bind(this)
+            targetSubject:'',
+            videoList: [],
+            subjectName: '',
+            videoTitle:'',
+             isLoading:true
+        }
      }
 
-     changeVideoTitle(title) {
-        this.setState({videoTitle:title})
-     }
-
+     async componentDidMount () {
+        const {router} = this.props
+        let subjectId = router.query.subject_id
+        let token = localStorage.getItem('token')
+        this.axios  = videoService(token)
+        let {data} = await this.axios.get(`/subject/${subjectId}/videos`)
+        await this.setState({videoList:data})
+        let subjectTitle = await data[0].videoName
+        await this.setState({videoTitle:subjectTitle,isLoading:false})
+        console.log(videoList)
+    }
     render() {
         const {router} = this.props
         return (<Template>
@@ -28,7 +39,12 @@ let subjectTitle = ''
                 <BreadcrumbItem><a href="#">INT491</a></BreadcrumbItem>
             </Breadcrumb>
             <h2>{this.state.videoTitle}</h2>
-            <Cardlist changeVideoTitle={this.changeVideoTitle} subjectId={router.query.subject_id}/>
+            {this.state.isLoading ? (
+                <div style={{width:'100%',height:'100%'}}>
+                    <Spiner/>
+                </div>
+            ):<Cardlist changeVideoTitle={this.changeVideoTitle} videoList={this.state.videoList} />            
+            }
         </Template>)
     }
 }
