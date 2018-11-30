@@ -56,14 +56,14 @@ export default class NavBar extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <div class="dropdown">
+                <div className="dropdown">
                   <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img style={{ borderRadius: '50%', marginTop: '6px' }} src="../../static/images/logo/user-1.png" width="30" height="28" />
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ left: '-103px' }} >
-                    <a class="dropdown-item" href="#">My Profile</a>
-                    <div class="dropdown-divider" />
-                    <a class="dropdown-item" href="#">Log Out</a>
+                  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ left: '-103px' }} >
+                    <a className="dropdown-item" href="#">My Profile</a>
+                    <div className="dropdown-divider" />
+                    <a className="dropdown-item" href="#">Log Out</a>
                   </div>
                 </div>
 

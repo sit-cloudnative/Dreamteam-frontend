@@ -83,6 +83,11 @@ export default class MyDocument extends Document {
           background-color: #5085A5;
           border-color: #ffffff;
         }
+        .profileCard {
+          webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+          moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+          box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+        }
         `}
         </style>
         <body>
