@@ -30,22 +30,13 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="0091ac" light expand="md" style={{
-          backgroundColor: '#009d90',
-          WebkitBoxShadow: '0px 2px 11px -3px rgba(0,0,0,0.75)',
-          MozBoxShadow: '0px 2px 11px -3px rgba(0,0,0,0.75)',
-          boxShadow: '0px 2px 11px -3px rgba(0,0,0,0.75)',
-          position: 'fixed',
-          top: '0',
-          width: '100%',
-          zIndex: '10'
-        }} >
+        <Navbar color="0091ac" light expand="md">
           <a className="navbar-brand" href="/" style={{ color: 'white' }}><i className="fa fa-cloud" style={{ fontSize: 18, color: 'white' }}></i> Dream-Learning </a>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem style={{ paddingTop: '5.5px', paddingRight: '200px' }}>
-                  <input className="searchBar" type="text" name="search" placeholder="Search..." />
+                <input className="searchBar" type="text" name="search" placeholder="Search..." />
               </NavItem>
               <NavItem>
                 <NavLink href="/" style={{ color: '#e4e4e4' }}>Curriculums</NavLink>
