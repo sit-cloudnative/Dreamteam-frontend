@@ -25,15 +25,16 @@ export default class MyDocument extends Document {
           }
           .navbar a:hover {
             background: #0091ac;
+            opacity: 80%;
             border-radius: 5%;
-            webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
-            moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
           }
           div.card :hover {
             webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
             moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
             box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+            -ms-transform: scale(1.1); 
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1); 
           }
         `}
         </style>
