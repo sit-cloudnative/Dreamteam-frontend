@@ -3,6 +3,9 @@ import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import {subjectService} from '../util/axios'
 import { Container } from 'reactstrap';
 import Router from 'next/router'
+import ReactLoading from "react-loading";
+import { width } from 'window-size';
+
 
 export default class Curriculum extends React.Component {
 
@@ -11,7 +14,8 @@ export default class Curriculum extends React.Component {
         this.state = {
             curriculum: [],
             subjectList: [],
-            curriculumCode: ''
+            curriculumCode: '',
+            isLoading:true
         }
         this.axios = {}
         this.getSubjectList = this.getSubjectList.bind(this)
@@ -52,15 +56,30 @@ export default class Curriculum extends React.Component {
             fontSize: '42px',
             textAlign: 'center'
         };
+        const loadingStyle = {
+                minHeight: '400px',
+                display:'flex',
+                display:'-webkit-flex',
+                flexWrap:'wrap',
+                flexDirection:'row',
+                justifyContent:'center',
+                alignItems:'center',
+                alignContent:'center'
+        }
         return (
             <Container fluid>
                 <Row>   
                     <Col sm="6">
                         <Card style={cardStyle} body>
                             <CardTitle style={cardtitleStyle}><i className="fas fa-graduation-cap"></i> Curriculum</CardTitle>
-                            {this.state.curriculum.map( (c,key) => (
+                            {/* {this.state.curriculum.map( (c,key) => (
                                 <Button className="btn" onClick={() => {this.getSubjectList(c.curriculumId)}} key={key} style={{marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac' ,width:'555px'}}> <i className="fas fa-graduation-cap fa-2x"></i>{c.curriculumName}</Button>
-                            ))}
+                            ))} */}
+                            loading
+                            <div style={{width:'100%',height:'100%'}}>
+                            <ReactLoading type={'spin'} color={'#0091ac'} />
+                            </div>
+
                         </Card>
                     </Col>
                     <Col sm="6">
