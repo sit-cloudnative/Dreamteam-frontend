@@ -29,3 +29,12 @@ export const videoService =  (token) => {
     }
   });
 }
+export const materialService =  (token) => {
+  return axios.create({
+    baseURL: 'http://localhost:8080',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': token
+    }
+  });
+}
