@@ -18,7 +18,7 @@ export default class extends React.Component {
         this.handleLogin = this.handleLogin.bind(this)
     }
 
-    async handleLogin(e) {
+    async handleLogin (e) {
         e.preventDefault()
         let response = {}
         try{
