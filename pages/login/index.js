@@ -20,25 +20,26 @@ export default class extends React.Component {
 
     async handleLogin(e) {
         e.preventDefault()
-        const response = {}
+        let response = {}
         try{
-        response = await this.axios({
-            method: 'post',
-            data: {
-                username: this.state.username,
-                password: this.state.password
-            },
-            url: '/login',
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            }
-        })
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('profileId', response.data.username)
-        }catch(e){
-            response.status=404
+            response = await this.axios({
+                method: 'post',
+                data: {
+                    username: this.state.username,
+                    password: this.state.password
+                },
+                url: '/login',
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('profileId', response.data.username)
             console.log(response)
-        }
+        }catch(e){
+            console.log(e)
+                // response.status=404
+            }
         console.log('****************')
         console.log(response)
        
