@@ -21,6 +21,7 @@ export default class MyDocument extends Document {
             font: 11px menlo;
           }
           .navbar {
+            color: #F7F9FB;
             background-color: #31708E;
             webkit-box-shadow: 0px 2px 11px -3px rgba(0,0,0,0.75);
             moz-box-shadow: 0px 2px 11px -3px rgba(0,0,0,0.75);
@@ -79,6 +80,14 @@ export default class MyDocument extends Document {
           webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
           moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
           box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+        }
+        .btn-secondary :hover {
+          webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+          moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+          box-shadow: 3px 4px 7px 5px rgba(0,0,0,0.1);
+          -ms-transform: scale(1); 
+          -webkit-transform: scale(1);
+          transform: scale(1); 
         }
         `}
         </style>
