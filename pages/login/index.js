@@ -20,9 +20,9 @@ export default class extends React.Component {
 
     async handleLogin(e) {
         e.preventDefault()
-        console.log(this.state.username)
-        console.log(this.state.password)
-        const { data } = await this.axios({
+        const response = {}
+        try{
+        response = await this.axios({
             method: 'post',
             data: {
                 username: this.state.username,
@@ -32,13 +32,21 @@ export default class extends React.Component {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
-
         })
+        localStorage.setItem('token', response.data.token)
+        localStorage.setItem('profileId', response.data.username)
+        }catch(e){
+            response.status=404
+            console.log(response)
+        }
         console.log('****************')
-        console.log(data)
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('profileId', data.username)
-        let localdata = localStorage.getItem('profileId')
+        console.log(response)
+       
+        if(response.status == 200){
+            Router.push('/user')
+        }else if(response.status == 404){
+            console.log('your pass word is not real ')
+        }
     }
 
     componentDidMount() {
@@ -90,7 +98,7 @@ export default class extends React.Component {
                                 <div className="form-group">
                                     <Row>
                                         <Col style={{ textAlign: 'center', backgroundColor: '#f7f7f7' }}>
-                                            <Button type="submit" color="primary" size="lg" block>Sign in</Button>
+                                            <Button color="primary" onClick={this.handleLogin} size="lg" block>Sign in</Button>
                                         </Col>
                                     </Row>
                                 </div>
@@ -100,7 +108,7 @@ export default class extends React.Component {
                             <div className="d-flex justify-content-center links">
                                 <Row>
                                     <a href="https://github.com/sit-cloudnative/DreamTeam" target="_blank">
-                                        <i class="fab fa-github"></i> Dreamteam's GitHub
+                                        <i className="fab fa-github"></i> Dreamteam's GitHub
                                 </a>
                                 </Row>
                             </div>
