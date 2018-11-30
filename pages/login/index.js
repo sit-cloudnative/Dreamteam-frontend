@@ -73,7 +73,10 @@ export default class extends React.Component {
                 </Row>
 
                 <div className="d-flex justify-content-center h-100" style={{ paddingTop: 'px' }}>
-                    <div className="card" style={{ width: '350px', boxShadow: '2px', justifyContent: 'center', display: 'flex', marginBottom: '20px', backgroundColor: '#f7f7f7' }}>
+                    <div className="card" style={{ 
+                        width: '350px', justifyContent: 'center', display: 'flex', marginBottom: '20px', backgroundColor: '#f7f7f7', 
+                        webkitBoxShadow: '2px 3px 5px 0px rgba(0,0,0,0.4)', mozBoxShadow: '2px 3px 5px 0px rgba(0,0,0,0.4)',boxShadow: '2px 3px 5px 0px rgba(0,0,0,0.4)'
+                        }}>
                         <div style={{ backgroundColor: '#f7f7f7', textAlign: 'center', paddingTop: '10px' }}>
                             <img src="../../static/images/logo/user-1.png" width="130" height="121" />
                         </div>
