@@ -47,9 +47,10 @@ export default class Curriculum extends React.Component {
     render() {
         const cardStyle = {
             width: '613px',
-            height: '539px',
-            overflowY: 'scroll',
-            overflowX: 'hidden'
+            marginTop: '100px',
+            height:'539px',
+            overflowY:'scroll',
+            overflowX:'hidden'
         };
         const cardtitleStyle = {
             fontSize: '33px',
@@ -71,16 +72,16 @@ export default class Curriculum extends React.Component {
         }
 
         return (
-            <Container style={{ marginTop: '11px' }} fluid>
-                <Row>
+            <Container style={{marginTop:'11px'}} fluid>
+                <Row>   
                     <Col sm="1"></Col>
                     <Col sm="5">
                         <Card style={cardStyle} body>
-                            <CardTitle style={cardtitleStyle}><i className="fas fa-graduation-cap"></i> Curriculum</CardTitle>
+                            <CardTitle style={cardtitleStyle}><i className="fas fa-graduation-cap"></i> Curriculum</CardTitle> 
                             {
-                                (this.state.isLoading) ? <Spiner /> : this.state.curriculum.map((c, key) => (
-                                    <Button className="btn " onClick={() => { this.getSubjectList(c.curriculumId) }} key={key} style={{ paddingBottom: '35px', marginTop: '11px', textAlign: 'left', backgroundColor: '#0091ac', width: '555px', textOverflow: 'ellipsis', overflow: 'hidden' }}> <i className="fas fa-graduation-cap fa-2x"></i>{c.curriculumName}</Button>
-                                ))
+                            (this.state.isLoading)? <Spiner /> :this.state.curriculum.map( (c, key) => (
+                                <Button className="btn " onClick={() => {this.getSubjectList(c.curriculumId)}} key={key} style={{paddingBottom:'35px', marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac' ,width:'555px', textOverflow: 'ellipsis', overflow: 'hidden'}}> <i className="fas fa-graduation-cap fa-2x"></i>{c.curriculumName}</Button>
+                                )) 
                             }
                         </Card>
                     </Col>
@@ -91,12 +92,12 @@ export default class Curriculum extends React.Component {
                                 <i style={{
                                     marginRight: '15px'
                                 }} className="fas fa-arrow-left"></i>Please select a curriculum
-                            </div>) : (
-                                    this.state.subjectList.map((s, key) => (
-                                        <Button className="btn" onClick={()=> {this.redirectToVideoListPage(s.subjectId)}} key={key} style={{paddingBottom:'35px', marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac',width:'555px'}}> <i className="fas fa-graduation-cap fa-2x"></i>{s.subjectName}</Button>
-                                    ))
-                                )}
-
+                            </div>):(
+                                this.state.subjectList.map( (s,key) => (
+                                    <Button className="btn" onClick={()=> {this.redirectToVideoListPage(s.subjectId)}} key={key} style={{paddingBottom:'35px', marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac',width:'555px'}}> <i className="fas fa-graduation-cap fa-2x"></i>{s.subjectName}</Button>
+                                ))
+                            )}
+                            
                         </Card>
                     </Col>
                 </Row>
