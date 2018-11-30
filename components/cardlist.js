@@ -20,6 +20,9 @@ export default class Cardlist extends React.Component {
         this.axios  = videoService(token)
         let {data} = await this.axios.get(`/subject/${subjectId}/videos`)
         this.setState({videoList:data})
+        let subjectTitle = data[0].videoName
+        this.props.changeVideoTitle(subjectTitle)
+        console.log()
     }
     render() {
         return (

@@ -10,6 +10,14 @@ let subjectTitle = ''
  class Videos extends React.Component {
      constructor(props){
          super(props)
+         this.state = {
+             videoTitle:''
+         }
+         this.changeVideoTitle = this.changeVideoTitle.bind(this)
+     }
+
+     changeVideoTitle(title) {
+        this.setState({videoTitle:title})
      }
 
     render() {
@@ -19,8 +27,8 @@ let subjectTitle = ''
                 <BreadcrumbItem><a href="#">B.SC.IT</a></BreadcrumbItem>
                 <BreadcrumbItem><a href="#">INT491</a></BreadcrumbItem>
             </Breadcrumb>
-            <h2>INT 491 Cloudnative development</h2>
-            <Cardlist subjectId={router.query.subject_id}/>
+            <h2>{this.state.videoTitle}</h2>
+            <Cardlist changeVideoTitle={this.changeVideoTitle} subjectId={router.query.subject_id}/>
         </Template>)
     }
 }
