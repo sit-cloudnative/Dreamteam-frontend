@@ -13,20 +13,12 @@ class Video extends React.Component {
     }
 
     componentDidMount(){
-        const {router} = this.props
-        const videoId = router.query.video_id
-        this.setState({
-            test:'test2'
-        })
-        console.log('state')
-        console.log(this.state.test)
-        console.log(this.state.targetVideo)
     }
 
     render() {
         return (
         <Template>
-            <VideoDetail videoId={this.state.targetVideo}/>
+            <VideoDetail videoId={this.props.router.query.video_id}/>
         </Template>)
     }
 }

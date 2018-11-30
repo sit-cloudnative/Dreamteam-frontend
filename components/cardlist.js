@@ -27,8 +27,8 @@ export default class Cardlist extends React.Component {
         <Container>
             <Row>
                 {this.state.videoList.map((video,key) =>(
-                <Col xs='3'>
-                    <Card key={key} video={video}/>
+                <Col xs='3' key={key}>
+                    <Card video={video}/>
                 </Col>
                 ))}
             </Row>
