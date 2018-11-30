@@ -9,6 +9,9 @@ import { withRouter } from 'next/router'
 class VideoCard extends React.Component{
     constructor(props) {
         super(props)
+        this.state = {
+            video: {}
+        }
         this.axios = {}
     }
 
@@ -17,9 +20,14 @@ class VideoCard extends React.Component{
         let targetVideo = this.props.videoId
         let token = localStorage.getItem('token')
         this.axios = videoService(token)
-        // let {data} = await this.axios.get(`https://dreamteam-videoservice.mybluemix.net/video/${targetVideo}`)
+        let {data} = await this.axios.get(`https://dreamteam-videoservice.mybluemix.net/video/${targetVideo}`)
         console.log('**********************targetVideo******************')
         console.log(targetVideo)
+        console.log(data)
+        this.setState({
+            video: data
+        })
+        console.log(this.state.video)
     }
 
     render() {
@@ -51,13 +59,13 @@ class VideoCard extends React.Component{
                 <Col xs="3"></Col>
                 <Col xs="6">
                     <Card style={cardStyle}>
-                        <CardTitle style={cardtitleStyle}><i className="fas fa-video"></i> INT202</CardTitle>
-                        {/* <ReactPlayer url='https://www.youtube.com/watch?v=v2wYgfKe_nk' playing controls style={videoStyle} /> */}
+                        <CardTitle style={cardtitleStyle}><i className="fas fa-video"></i> {this.state.video.videoName}</CardTitle>
+                        <ReactPlayer url={this.state.video.videoPath} controls style={videoStyle} />
 
                         <CardBody>
                             <hr />
 
-                            <CardText>Teacher :</CardText>
+                            <CardText>Teacher : {this.state.video.lecturer}</CardText>
                             <CardText>
                                 <small className="text-muted">Date : </small>
                             </CardText>
