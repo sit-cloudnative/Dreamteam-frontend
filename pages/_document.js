@@ -32,9 +32,15 @@ export default class MyDocument extends Document {
             webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
             moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
             box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
-            -ms-transform: scale(1.1); 
-            -webkit-transform: scale(1.1);
-            transform: scale(1.1); 
+            -ms-transform: scale(1.02); 
+            -webkit-transform: scale(1.02);
+            transform: scale(1.02); 
+          }
+          h6.card-subtitle {
+            font-size: 16px;
+          }
+          p.card-text {
+            font-size: 16px;
           }
         `}
         </style>
