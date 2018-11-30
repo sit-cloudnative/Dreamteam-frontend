@@ -4,18 +4,23 @@ import { materialService } from '../util/axios'
 import DeleteMaterialModal from './deleteMaterialModal'
 import moment from 'moment'
 
-export default class Example extends React.Component {
+export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      materials: []
+      materials: [],
+      courseName: ''
     }
     this.axios = {}
   }
   async componentDidMount() {
+    await this.setState({
+      courseName: this.props.courseName
+    })
     const token = ''
     this.axios = materialService(token)
-    const { data } = await this.axios.get('/files/INT102')
+    console.log(this.state.courseName)
+    const { data } = await this.axios.get(`/files/${this.props.courseName}`)
     console.log(data)
     this.setState({
       materials: data
@@ -30,10 +35,10 @@ export default class Example extends React.Component {
   render() {
     const materials = this.state.materials.map((material, index) => {
       return (
-        <tr key={material.id} onClick={() => {this.onDownload(material.id)}} style={{cursor: 'pointer'}}>
-          <td scope="row">{index+1}</td>
-          <td>{material.fileName}</td>
-          <td>{moment(material.createdAt).format('DD-MM-YYYY HH:mm')}</td>
+        <tr key={material.id} style={{cursor: 'pointer'}}>
+          <td scope="row" onClick={() => {this.onDownload(material.id)}} >{index+1}</td>
+          <td onClick={() => {this.onDownload(material.id)}} >{material.fileName}</td>
+          <td onClick={() => {this.onDownload(material.id)}} >{moment(material.createdAt).format('DD-MM-YYYY HH:mm')}</td>
           <td>
             <DeleteMaterialModal material={material}/>
           </td>
