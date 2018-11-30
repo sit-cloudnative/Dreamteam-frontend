@@ -2,6 +2,7 @@ import React from 'react';
 import { Table ,Button  } from 'reactstrap';
 import { materialService } from '../util/axios'
 import DeleteMaterialModal from './deleteMaterialModal'
+import moment from 'moment'
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class Example extends React.Component {
         <tr key={material.id} onClick={() => {this.onDownload(material.id)}} style={{cursor: 'pointer'}}>
           <td scope="row">{index+1}</td>
           <td>{material.fileName}</td>
-          <td>{material.createdAt}</td>
+          <td>{moment(material.createdAt).format('DD-MM-YYYY HH:mm')}</td>
           <td>
             <DeleteMaterialModal material={material}/>
           </td>
