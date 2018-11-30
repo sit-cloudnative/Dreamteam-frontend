@@ -22,6 +22,13 @@ export default class MyDocument extends Document {
           }
           .navbar {
             background-color: #31708E;
+            webkit-box-shadow: 0px 2px 11px -3px rgba(0,0,0,0.75);
+            moz-box-shadow: 0px 2px 11px -3px rgba(0,0,0,0.75);
+            box-shadow: 0px 2px 11px -3px rgba(0,0,0,0.75);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            zIndex: 10;
           }
           .navbar a {
             border-radius: 20%;           
@@ -61,6 +68,13 @@ export default class MyDocument extends Document {
           -webkit-transition: width 0.4s ease-in-out;
           transition: width 0.4s ease-in-out;
           }
+        button.backToHome {
+          background-color: #31708E;
+        }
+        button.backToHome :hover {
+          background-color: #5085A5;
+          border-color: #ffffff;
+        }
         `}
         </style>
         <body>
