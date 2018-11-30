@@ -25,7 +25,7 @@ const SubjectCard = ({ video }) => {
   return (
     <div>
       <a onClick={() => redirectToVideo(video.videoId)}>
-        <Card style={{ marginBottom: '30px', borderRadius: '10px 10px 10px 10px', borderColor: '#f7f7f7' }}>
+        <Card style={{ marginBottom: '24px', borderRadius: '10px 10px 10px 10px', borderColor: '#f7f7f7' }}>
           <CardImg top width="100%" src={video.videoThumbnail} alt="Card image cap" style={{ borderRadius: '10px 10px 0% 0%' }} />
           <CardBody>
             <CardSubtitle>{video.lecturer}</CardSubtitle>
