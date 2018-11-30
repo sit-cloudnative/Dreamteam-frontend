@@ -22,14 +22,15 @@ const SubjectCard = ({video}) => {
 
   return (
     <div>
-      <Card style={{marginBottom:'11px'}}>  
-        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-        <CardBody>
-          <CardSubtitle>{video.lecturer}</CardSubtitle>
-          <CardText>28 NOVEMBER 2018</CardText>
-          <Button onClick={() => redirectToVideo(video.videoId)}>Button</Button>
-        </CardBody>
-      </Card>
+      <a onClick={() => redirectToVideo(video.videoId)}>
+        <Card style={{marginBottom:'11px'}}>  
+          <CardImg top width="100%" src={video.videoThumbnail} alt="Card image cap" />
+          <CardBody>
+            <CardSubtitle>{video.lecturer}</CardSubtitle>
+            <CardText>28 NOVEMBER 2018</CardText>
+          </CardBody>
+        </Card>
+      </a>
     </div>
   );
 };
