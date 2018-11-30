@@ -16,16 +16,21 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href={`${this.props.__NEXT_DATA__.assetPrefix}/_next/static/style.css`}/>
         </Head>
         <style jsx global>{`
-           body { 
+          body { 
             background: #f7f7f7;
             font: 11px menlo;
           }
-          navbar a {
+          .navbar a {
             border-radius: 20%;           
           }
           .navbar a:hover {
             background: #0d386e;
             border-radius: 5%;
+          }
+          div.card :hover {
+            webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+            moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
+            box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
           }
         `}
         </style>
