@@ -46,7 +46,6 @@ export default class Curriculum extends React.Component {
     }
     render() {
         const cardStyle = {
-            marginTop: '100px',
             height:'539px',
             overflowY:'scroll',
             overflowX:'hidden'
@@ -71,7 +70,7 @@ export default class Curriculum extends React.Component {
         }
 
         return (
-            <Container fluid>
+            <Container style={{marginTop:'11px'}} fluid>
                 <Row>   
                     <Col sm="6">
                         <Card style={cardStyle} body>
