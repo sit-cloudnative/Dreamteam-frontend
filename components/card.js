@@ -14,12 +14,13 @@ videoThumbnail: "https://ngelearning.sit.kmutt.ac.th/api/video_image?id=8282"
  */
 
 const SubjectCard = ({ video }) => {
-  const redirectToVideo = (TargetVideo) => {
-    console.log(TargetVideo)
-    //   Router.push({
-    //     pathname: '/videos',
-    //     query: { subject_id: targetSubjectId }
-    // })
+
+  const redirectToVideo = (targetVideo) => {
+    console.log(targetVideo)
+      Router.push({
+        pathname: '/video',
+        query: { video_id: targetVideo }
+    })
   }
 
   return (
