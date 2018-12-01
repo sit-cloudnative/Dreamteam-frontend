@@ -23,7 +23,6 @@ class Index extends React.Component{
         await this.setState({
             courseName
         })
-        console.log(this.state.courseName)
     }
     async onBackToSubject() {
         const token = localStorage.getItem('token') || ''
@@ -34,7 +33,6 @@ class Index extends React.Component{
             }
         })
         const subject = data[0]
-        console.log(subject)
         Router.push({
             pathname: '/videos',
             query: {

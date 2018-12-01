@@ -34,7 +34,6 @@ export default class Index extends React.Component {
             profile: data,
             isLoading:false
         })
-        console.log(this.state.profile)
     }
 
     render() {

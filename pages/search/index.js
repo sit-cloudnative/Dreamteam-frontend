@@ -21,7 +21,6 @@ class Search extends React.Component {
                 keyword: router.query.keyword
             }
         })
-        console.log(data)
         this.setState({
             subjects: data
         })

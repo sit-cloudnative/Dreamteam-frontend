@@ -48,7 +48,6 @@ export default class extends React.Component {
     componentDidMount() {
         let token = localStorage.getItem('token')
         this.axios = userService(token)
-        console.log(token)
         if(token !== null){
             Router.push('/subject')
         }

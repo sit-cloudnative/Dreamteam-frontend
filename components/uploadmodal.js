@@ -29,11 +29,8 @@ class UploadModal extends React.Component {
         });
     }
     onSelectedFile(e) {
-        console.log(e.target.files)
         this.setState({
             material: e.target.files[0]
-        },() => {
-            console.log(this.state.material)
         })
     }
     async onSubmitFile(e) {
@@ -51,7 +48,6 @@ class UploadModal extends React.Component {
                 }
             }
         )
-        console.log(data)
         this.toggle()
         this.setState({
             isLoad: false

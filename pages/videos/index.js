@@ -48,7 +48,6 @@ let subjectTitle = ''
             if(errorChecker(response)){
             await this.setState({videoList:response.data})
         }
-        console.log(response)
     }
 
     async getSubjectDetail() {
@@ -59,7 +58,6 @@ let subjectTitle = ''
         try{
             response = await this.axios.get(`/subject/${subjectId}`)
         }catch(err){
-            console.log("ERRORRORORO")
             if(err == 'Error: Request failed with status code 404'){
                 this.setState({videoList:'notfound',isLoading:false})
             }

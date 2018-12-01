@@ -38,11 +38,9 @@ export default class Curriculum extends React.Component {
     async getSubjectList(targetCurriculumId) {
         const { data } = await this.axios.get(`/curriculum/${targetCurriculumId}/subjects`)
         this.setState({ subjectList: data })
-        console.log(data)
     }
 
     redirectToVideoListPage(targetSubjectId) {
-        console.log(targetSubjectId)
         Router.push({
             pathname: '/videos',
             query: { subject_id: targetSubjectId }

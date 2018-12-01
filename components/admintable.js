@@ -19,9 +19,7 @@ export default class extends React.Component {
     })
     const token = localStorage.getItem("token") || ''
     this.axios = materialService(token)
-    console.log(this.state.courseName)
     const { data } = await this.axios.get(`/files/${this.props.courseName}`)
-    console.log(data)
     this.setState({
       materials: data
     })
