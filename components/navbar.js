@@ -21,7 +21,21 @@ export default class NavBar extends React.Component {
     this.state = {
       isOpen: false
     };
+    this.searchVideo = this.searchVideo.bind(this)
   }
+
+  searchVideo(e) {
+    let keyword = e.target.value
+    if(e.key == 'Enter'){
+      Router.push({
+        pathname:'/videos',
+        query:{
+          keyword:keyword
+        }
+      })
+    }
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -36,7 +50,7 @@ export default class NavBar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem style={{ paddingTop: '5.5px', paddingRight: '200px' }}>
-                <input className="searchBar" type="text" name="search" placeholder="Search..." />
+                <input className="searchBar" onKeyDown={(e) => this.searchVideo(e)} type="text" name="search" placeholder="Search..." />
               </NavItem>
               <NavItem>
                 <NavLink onClick={() => {Router.push('/subject')}} style={{ color: '#e4e4e4' }}>Curriculums</NavLink>

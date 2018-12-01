@@ -47,8 +47,5 @@ export const errorChecker = (response) => {
     localStorage.clear
     Router.push('/login')
     return false
-  }else{
-    Router.push('/oops')    
-    return false
   }
 }

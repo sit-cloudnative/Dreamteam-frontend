@@ -29,19 +29,24 @@ let subjectTitle = ''
      async componentDidMount () {
         const {router} = this.props
         let subjectId = router.query.subject_id
+        let keyword = router.query.keyword
         let token = localStorage.getItem('token')
-        this.setState({
+        await this.setState({
             token
         })
-        this.axios  = videoService(token)
+        this.getSubjectById(subjectId)
+        await this.getSubjectDetail()
+    }
+
+    async getSubjectById(subjectId){
         let response = {}
+        this.axios = videoService(this.state.token)
         try{
-        response = await this.axios.get(`/subject/${subjectId}/videos`)
+            response = await this.axios.get(`/subject/${subjectId}/videos`)
         }catch(err){}
-        if(errorChecker(response)){
+            if(errorChecker(response)){
             await this.setState({videoList:response.data})
         }
-        await this.getSubjectDetail()
     }
 
     async getSubjectDetail() {
