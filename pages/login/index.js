@@ -1,7 +1,6 @@
 import React from 'react'
 import { Jumbotron, Container, Row, Col, Button } from 'reactstrap'
 import { userService } from '../../util/axios'
-import Head from 'next/head';
 import Router from 'next/router'
 
 export default class extends React.Component {
@@ -47,7 +46,12 @@ export default class extends React.Component {
     }
 
     componentDidMount() {
-        this.axios = userService(localStorage.getItem('token'))
+        let token = localStorage.getItem('token')
+        this.axios = userService(token)
+        console.log(token)
+        if(token !== null){
+            Router.push('/subject')
+        }
     }
 
     render() {

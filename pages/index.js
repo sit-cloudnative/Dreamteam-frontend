@@ -6,7 +6,7 @@ import Spiner from '../components/loadingcomponent'
 
 export default class Index extends React.Component{
     componentDidMount(){
-        Router.push('/subject')
+        Router.push('/login')
     }
     render() {
         return(<Template>
