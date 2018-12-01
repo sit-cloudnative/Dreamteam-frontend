@@ -28,7 +28,7 @@ export default class NavBar extends React.Component {
     let keyword = e.target.value
     if(e.key == 'Enter'){
       Router.push({
-        pathname:'/videos',
+        pathname:'/search',
         query:{
           keyword:keyword
         }
