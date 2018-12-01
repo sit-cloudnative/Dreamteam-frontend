@@ -36,10 +36,10 @@ class VideoCard extends React.Component{
 
     render() {
         const videoStyle = {
-            height: '350px',
+            width:  '585px',
+            height: 'auto',
             marginLeft: '25px',
             marginTop: '5px'
-    
         };
         const videoStyle2 = {
             height: '300px',
@@ -64,7 +64,7 @@ class VideoCard extends React.Component{
                 <Col xs="6">
                     <Card style={cardStyle}>
                         <CardTitle style={cardtitleStyle}><i className="fas fa-video"></i> {this.state.video.videoName}</CardTitle>
-                        <ReactPlayer url={this.state.video.videoPath} controls style={videoStyle} />
+                        <ReactPlayer width={588} url={this.state.video.videoPath} controls style={videoStyle} />
 
                         <CardBody>
                             <hr />

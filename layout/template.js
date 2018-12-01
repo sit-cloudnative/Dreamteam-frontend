@@ -3,6 +3,8 @@ import Footer from './footer'
 import Navbar from '../components/navbar'
 import React from 'react'
 import Router from 'next/router'
+// import ErrorPage from '../pages/_error'
+import ErrorPage from '../components/error'
 export default class Template extends React.Component{
 
   constructor(props){
@@ -11,10 +13,10 @@ export default class Template extends React.Component{
 
   componentDidMount(){
     let token = localStorage.getItem('token')
-    console.log('token')
-    console.log(token)
     if(token == null ){
       Router.push('/login')
+    }else if(this.props.statusCode == 404){
+      return <ErrorPage statusCode={this.props.statusCode} message="error!" />
     }
   }
 
