@@ -6,6 +6,7 @@ import {videoService, errorChecker, subjectService} from '../util/axios'
 import { withRouter } from 'next/router'
 import moment from 'moment'
 import Router from 'next/router'
+import Spin from '../components/loadingcomponent'
 
 
 class VideoCard extends React.Component {
@@ -20,7 +21,7 @@ class VideoCard extends React.Component {
     }
 
     async componentDidMount() {
-        let targetVideo = this.props.videoId
+        let targetVideo = await this.props.videoId
         let token = localStorage.getItem('token') || ''
         this.axios = videoService(token)
         let response = {}
@@ -109,17 +110,21 @@ class VideoCard extends React.Component {
             <Row>
                 <Col xs="9">
                     <Card style={cardStyle}>
-                        <CardTitle style={cardtitleStyle}><i className="fas fa-video"></i> {this.state.video.videoName}</CardTitle>
-                        <ReactPlayer url={this.state.video.videoPath} playing controls style={videoStyle} width={1000} height={400}/>
+                        {this.state.isLoading ? <Spin/>:(
+                        <div>
+                                <CardTitle style={cardtitleStyle}><i className="fas fa-video"></i> {this.state.video.videoName}</CardTitle>
+                            <ReactPlayer url={this.state.video.videoPath} playing controls style={videoStyle} width={1000} height={400}/>
+                                <CardBody>
+                                    <hr />
 
-                            <CardBody>
-                                <hr />
-
-                            <CardText>Teacher : {this.state.video.lecturer}</CardText>
-                            <CardText>
-                                <small className="text-muted">Date : {this.state.video.period}</small>
-                            </CardText>
-                        </CardBody>
+                                <CardText>Teacher : {this.state.video.lecturer}</CardText>
+                                <CardText>
+                                    <small className="text-muted">Date : {this.state.video.period}</small>
+                                </CardText>
+                            </CardBody>  
+                        </div>  
+                        )
+                        }
                     </Card>
                 </Col>
                 <Col xs="3">
