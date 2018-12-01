@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
-import { subjectService } from '../util/axios'
+import { subjectService,errorChecker } from '../util/axios'
 import { Container } from 'reactstrap';
 import Router from 'next/router'
 import Spiner from '../components/loadingcomponent'
@@ -23,11 +23,18 @@ export default class Curriculum extends React.Component {
     async componentDidMount() {
         let token = localStorage.getItem('token')
         this.axios = subjectService(token)
-        let { data } = await this.axios.get('/curriculums')
-        this.setState({
-            curriculum: data,
-            isLoading: false
-        })
+        let response = {}
+        try{
+            response = await this.axios.get('/curriculums')
+        }catch(err){}
+        if(errorChecker(response)){
+            console.log(response)
+            this.setState({
+                curriculum:response.data,
+                isLoading:false
+            })
+        }
+        
         console.log(this.state.curriculum)
     }
 
@@ -81,7 +88,7 @@ export default class Curriculum extends React.Component {
                             {
                             (this.state.isLoading)? <Spiner /> :this.state.curriculum.map( (c, key) => (
                                 <Button className="btn " onClick={() => {this.getSubjectList(c.curriculumId)}} key={key} style={{paddingBottom:'35px', marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac' ,width:'555px', textOverflow: 'ellipsis', overflow: 'hidden'}}> <i className="fas fa-graduation-cap fa-2x"></i>{c.curriculumName}</Button>
-                                )) 
+                            )) 
                             }
                         </Card>
                     </Col>

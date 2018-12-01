@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Router from 'next/router'
 export const userService = (token) => {
   return axios.create({
     baseURL: 'https://dreamteam-userservice.mybluemix.net',
@@ -37,4 +38,17 @@ export const materialService =  (token) => {
       'Authorization': token
     }
   });
+}
+
+export const errorChecker = (response) => {
+  if(response.status == 200){
+    return true
+  }else if(response.status == 401 ){
+    localStorage.clear
+    Router.push('/login')
+    return false
+  }else{
+    Router.push('/oops')    
+    return false
+  }
 }
