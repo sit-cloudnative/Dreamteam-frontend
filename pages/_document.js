@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
         </Head>
         <style jsx global>{`
           body { 
-            background-color: #F7F9FB;
+            background-color: #000000;
             font: 11px menlo;
           }
           .navbar {
@@ -96,6 +96,13 @@ export default class MyDocument extends Document {
           -ms-transform: scale(1); 
           -webkit-transform: scale(1);
           transform: scale(1); 
+        }
+        div.footer {
+          padding-top: 5px;
+          background-color: #31708E;
+          height: 60px;
+          text-align: center;
+          color: #F7F9FB;
         }
         `}
         </style>
