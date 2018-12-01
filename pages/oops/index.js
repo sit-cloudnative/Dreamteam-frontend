@@ -9,7 +9,7 @@ export default class Oops extends React.Component {
         return (
             <div>
                 <Card body inverse color="danger" style={cardStyle}>
-                    <CardTitle>Oops ! Something went wrong please try agin later</CardTitle>
+                    <CardTitle>Oops ! Something went wrong please try again later</CardTitle>
                 </Card>
             </div>
         )
