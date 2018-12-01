@@ -26,7 +26,7 @@ class Index extends React.Component{
         console.log(this.state.courseName)
     }
     async onBackToSubject() {
-        const token = ''
+        const token = localStorage.getItem('token') || ''
         this.axios = subjectService(token)
         const { data } = await this.axios.get('/subjects',{
             params: {
@@ -42,6 +42,14 @@ class Index extends React.Component{
             }
         })
     }
+    hasStorage() {
+        try {
+            localStorage.getItem('token')
+            return true
+        } catch (exception) {
+            return false
+        }
+    }
     render() {
         return(
         <Template>
@@ -54,7 +62,7 @@ class Index extends React.Component{
             <div className='row' style={{paddingBottom:'22px'}}>
                 <div className='col-2 offset-10'>
                     {
-                        (localStorage)?
+                        (this.hasStorage())?
                             (localStorage.getItem("role") && localStorage.getItem('role') == 'admin')?
                                 <UploadModal courseName={this.state.courseName}/>:
                                 '':
@@ -65,7 +73,7 @@ class Index extends React.Component{
             </div>
             <div className="container">
                 {
-                    (localStorage)?
+                    (this.hasStorage())?
                         (localStorage.getItem("role") && localStorage.getItem("role") == 'admin')?
                             <AdminTable courseName={this.state.courseName}/>:
                             <Table courseName={this.state.courseName}/>:
