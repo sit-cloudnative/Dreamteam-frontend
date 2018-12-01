@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button, CardTitle, CardText } from 'reactstrap';
+import Router from 'next/router'
 export default class Oops extends React.Component {
     render() {
         const cardStyle = {
@@ -17,7 +18,7 @@ export default class Oops extends React.Component {
             <div>
                 <Card body inverse color="danger" style={cardStyle}>
                     <CardTitle>Oops ! Something went wrong please try again later</CardTitle>
-                    <Button style={buttonStyle} className="backToHome" block>Back to home</Button>
+                    <Button style={buttonStyle} onClick={() => Router.push('/')} className="backToHome" block>Back to home</Button>
 
                 </Card>
             </div>

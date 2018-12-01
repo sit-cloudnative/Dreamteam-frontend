@@ -9,6 +9,7 @@ module.exports = {
         '/video': { page: '/video' },
         '/material': { page: '/material' },
         '/oops': { page: '/oops' },
+        '/search': { page: '/search' },
       }
     }
   }
