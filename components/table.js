@@ -23,15 +23,29 @@ export default class extends React.Component {
       materials: data
     })
   }
-  onDownload(id) {
-    const url = 'http://localhost:8080/'
-    window.open(url+`file/${id}`)
+  async onDownload(id, name) {
+    const token = localStorage.getItem("token") || ''
+    this.axios = materialService(token)
+    const { data } = await this.axios.get(`/file/${id}`,
+        {
+            responseType: 'arraybuffer',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            }
+        })
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', name);
+    document.body.appendChild(link);
+    link.click();
   }
 
   render() {
     const materials = this.state.materials.map((material, index) => {
       return (
-        <tr key={material.id} onClick={() => {this.onDownload(material.id)}}>
+        <tr style={{cursor: 'pointer'}} key={material.id} onClick={() => {this.onDownload(material.id, material.fileName)}}>
           <th scope="row">{index+1}</th>
           <td>{material.fileName}</td>
           <td>{moment(material.createdAt).format('DD-MM-YYYY HH:mm')}</td>
