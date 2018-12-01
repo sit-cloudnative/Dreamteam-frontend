@@ -47,6 +47,7 @@ export default class Curriculum extends React.Component {
                             <CardTitle style={cardtitleStyle}><i class="fas fa-graduation-cap" fa-3x></i> Curriculum</CardTitle>
                             
                             <Button className="btn-dark"><i class="fas fa-graduation-cap fa-2x"></i>  B.Sc.IT Students</Button>
+                            
                         </Card>
                     </Col>
                     <Col sm="6">

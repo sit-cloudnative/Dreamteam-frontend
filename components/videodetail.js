@@ -6,7 +6,7 @@ import ReactPlayer from 'react-player'
 const card = (props) => {
     const videoStyle = {
         height: '350px',
-        marginLeft: '25px',
+        marginLeft: '75px',
         marginTop: '5px'
 
     };
@@ -18,7 +18,7 @@ const card = (props) => {
 
     };
     const cardStyle = {
-        marginTop: '100px'
+        marginTop: '15px'
     };
     const cardtitleStyle = {
         marginTop: '10px',
