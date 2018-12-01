@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'
 import {
   Collapse,
   Navbar,
@@ -39,7 +40,7 @@ export default class NavBar extends React.Component {
                 <input className="searchBar" type="text" name="search" placeholder="Search..." />
               </NavItem>
               <NavItem>
-                <NavLink href="/" style={{ color: '#e4e4e4' }}>Curriculums</NavLink>
+                <NavLink onClick={() => {Router.push('/subject')}} style={{ color: '#e4e4e4' }}>Curriculums</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret style={{ color: '#e4e4e4' }}>
