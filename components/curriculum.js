@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
-import { subjectService,errorChecker } from '../util/axios'
+import { subjectService, errorChecker } from '../util/axios'
 import { Container } from 'reactstrap';
 import Router from 'next/router'
 import Spiner from '../components/loadingcomponent'
@@ -24,13 +24,13 @@ export default class Curriculum extends React.Component {
         let token = localStorage.getItem('token')
         this.axios = subjectService(token)
         let response = {}
-        try{
+        try {
             response = await this.axios.get('/curriculums')
-        }catch(err){}
-        if(errorChecker(response)){
+        } catch (err) { }
+        if (errorChecker(response)) {
             this.setState({
-                curriculum:response.data,
-                isLoading:false
+                curriculum: response.data,
+                isLoading: false
             })
         }
     }
@@ -50,9 +50,9 @@ export default class Curriculum extends React.Component {
         const cardStyle = {
             width: '613px',
             marginTop: '20px',
-            height:'539px',
-            overflowY:'scroll',
-            overflowX:'hidden'
+            height: '539px',
+            overflowY: 'scroll',
+            overflowX: 'hidden'
         };
         const cardtitleStyle = {
             fontSize: '33px',
@@ -75,15 +75,15 @@ export default class Curriculum extends React.Component {
 
         return (
             <Container fluid>
-                <Row>   
+                <Row>
                     <Col sm="1"></Col>
                     <Col sm="5">
                         <Card style={cardStyle} body>
-                            <CardTitle style={cardtitleStyle}><i className="fas fa-graduation-cap"></i> Curriculum</CardTitle> 
+                            <CardTitle style={cardtitleStyle}><i className="fas fa-graduation-cap"></i> Curriculum</CardTitle>
                             {
-                            (this.state.isLoading)? <Spiner /> :this.state.curriculum.map( (c, key) => (
-                                <Button className="btn " onClick={() => {this.getSubjectList(c.curriculumId)}} key={key} style={{paddingBottom:'35px', marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac' ,width:'555px', textOverflow: 'ellipsis', overflow: 'hidden'}}> <i className="fas fa-graduation-cap fa-2x"></i>{c.curriculumName}</Button>
-                            )) 
+                                (this.state.isLoading) ? <Spiner /> : this.state.curriculum.map((c, key) => (
+                                    <Button className="backToHome" onClick={() => { this.getSubjectList(c.curriculumId) }} key={key} style={{ paddingBottom: '35px', marginTop: '11px', textAlign: 'left', width: '555px', textOverflow: 'ellipsis', overflow: 'hidden' }}> <i className="fas fa-graduation-cap fa-2x"></i>{c.curriculumName}</Button>
+                                ))
                             }
                         </Card>
                     </Col>
@@ -94,12 +94,12 @@ export default class Curriculum extends React.Component {
                                 <i style={{
                                     marginRight: '15px'
                                 }} className="fas fa-arrow-left"></i>Please select a curriculum
-                            </div>):(
-                                this.state.subjectList.map( (s,key) => (
-                                    <Button className="btn" onClick={()=> {this.redirectToVideoListPage(s.subjectId)}} key={key} style={{paddingBottom:'35px', marginTop:'11px',textAlign:'left' ,backgroundColor:'#0091ac',width:'555px'}}> <i className="fas fa-graduation-cap fa-2x"></i>{s.subjectName}</Button>
-                                ))
-                            )}
-                            
+                            </div>) : (
+                                    this.state.subjectList.map((s, key) => (
+                                        <Button className="btn" onClick={() => { this.redirectToVideoListPage(s.subjectId) }} key={key} style={{ paddingBottom: '35px', marginTop: '11px', textAlign: 'left', backgroundColor: '#0091ac', width: '555px' }}> <i className="fas fa-graduation-cap fa-2x"></i>{s.subjectName}</Button>
+                                    ))
+                                )}
+
                         </Card>
                     </Col>
                 </Row>

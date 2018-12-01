@@ -28,13 +28,15 @@ export default class MyDocument extends Document {
             zIndex: 10;
           }
           .navbar a {
-            border-radius: 20%;   
-            cursor: pointer;        
+            border-radius: 20%;         
           }
           .navbar a:hover {
             background: #5085A5;
             opacity: 80%;
             border-radius: 5%;
+          }
+          a {
+            cursor: pointer;
           }
           .videoCard :hover {
             webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.1);
@@ -68,6 +70,10 @@ export default class MyDocument extends Document {
           }
         button.backToHome {
           background-color: #31708E;
+        }
+        button.backToHome :hover {
+          background-color: #5085A5;
+          border-color: #ffffff;
         }
         button.backToHome :hover {
           background-color: #5085A5;
