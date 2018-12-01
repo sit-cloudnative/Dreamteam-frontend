@@ -6,6 +6,7 @@ import { withRouter } from 'next/router'
 import Router from 'next/router'
 import {videoService , subjectService, errorChecker} from '../../util/axios'
 import Spiner from '../../components/loadingcomponent'
+import Notfound from '../../components/notfound'
 
 let subjectTitle = ''
 
@@ -47,6 +48,7 @@ let subjectTitle = ''
             if(errorChecker(response)){
             await this.setState({videoList:response.data})
         }
+        console.log(response)
     }
 
     async getSubjectDetail() {
@@ -56,7 +58,12 @@ let subjectTitle = ''
         let response = {}
         try{
             response = await this.axios.get(`/subject/${subjectId}`)
-        }catch(err){}
+        }catch(err){
+            console.log("ERRORRORORO")
+            if(err == 'Error: Request failed with status code 404'){
+                this.setState({videoList:'notfound',isLoading:false})
+            }
+        }
         if(errorChecker(response)){
             this.setState({
                 subject:response.data,
