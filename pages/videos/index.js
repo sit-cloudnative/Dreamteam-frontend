@@ -84,10 +84,10 @@ let subjectTitle = ''
                 <BreadcrumbItem active><a onClick={() => Router.push('/subject')}>Curriculumn</a></BreadcrumbItem>
                 <BreadcrumbItem>{this.state.subject.subjectCode}</BreadcrumbItem>
             </Breadcrumb>
-            <Row style={{textAlign:'center',paddingLeft:'230px'}}>
+            <Row style={{textAlign:'center',paddingLeft:'230px',marginBottom: '20px'}}>
                 <Col xs={10} style={{fontSize:'33px'}}>{this.state.subject.subjectName}</Col>
                 <Col xs={2}>
-                    <Button  onClick={this.goToMaterial}>Material</Button>
+                    <Button className="backToHome" onClick={this.goToMaterial}>View Materials</Button>
                 </Col>
             </Row>
             {this.state.isLoading ? (

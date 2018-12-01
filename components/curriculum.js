@@ -96,7 +96,7 @@ export default class Curriculum extends React.Component {
                                 }} className="fas fa-arrow-left"></i>Please select a curriculum
                             </div>) : (
                                     this.state.subjectList.map((s, key) => (
-                                        <Button className="btn" onClick={() => { this.redirectToVideoListPage(s.subjectId) }} key={key} style={{ paddingBottom: '35px', marginTop: '11px', textAlign: 'left', backgroundColor: '#0091ac', width: '555px' }}> <i className="fas fa-graduation-cap fa-2x"></i>{s.subjectName}</Button>
+                                        <Button className="backToHome" onClick={() => { this.redirectToVideoListPage(s.subjectId) }} key={key} style={{ paddingBottom: '35px', marginTop: '11px', textAlign: 'left', width: '555px' }}> <i className="fas fa-graduation-cap fa-2x"></i>{s.subjectName}</Button>
                                     ))
                                 )}
 
