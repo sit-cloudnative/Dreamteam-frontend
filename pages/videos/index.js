@@ -87,7 +87,10 @@ let subjectTitle = ''
                 <BreadcrumbItem>{this.state.subject.subjectCode}</BreadcrumbItem>
             </Breadcrumb>
             <Row style={{textAlign:'center',paddingLeft:'230px'}}>
-                <Col xs={10} style={{fontSize:'33px'}}>{this.state.subject.subjectName}</Col><Col xs={2}><Button  onClick={this.goToMaterial}>Material</Button></Col>
+                <Col xs={10} style={{fontSize:'33px'}}>{this.state.subject.subjectName}</Col>
+                <Col xs={2}>
+                    <Button  onClick={this.goToMaterial}>Material</Button>
+                </Col>
             </Row>
             {this.state.isLoading ? (
                 <div style={{width:'100%',height:'100%'}}>

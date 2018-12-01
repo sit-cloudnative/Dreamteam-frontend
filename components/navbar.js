@@ -33,6 +33,9 @@ export default class NavBar extends React.Component {
           keyword:keyword
         }
       })
+      if(window.location.href.indexOf('search') > -1){
+        window.location.reload()
+      }
     }
   }
 
