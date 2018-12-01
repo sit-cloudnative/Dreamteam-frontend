@@ -29,11 +29,6 @@ export default ({profile}) => (
                     <Label for="Faculty">Faculty</Label>
                     <Input type="text" name="faculty" id="faculty" value={profile.faculty} readOnly />
                 </FormGroup>
-                <Row>
-                    <Col style={{ textAlign: 'center' }}>
-                        <Button className="backToHome"  size="lg" block>Back to Home</Button>
-                    </Col>
-                </Row>
             </Form>
         </CardBody>
     </Card>

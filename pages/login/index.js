@@ -2,6 +2,7 @@ import React from 'react'
 import { Jumbotron, Container, Row, Col, Button } from 'reactstrap'
 import { userService } from '../../util/axios'
 import Router from 'next/router'
+import ReactLoading from 'react-loading'
 
 export default class extends React.Component {
     constructor() {
@@ -11,7 +12,8 @@ export default class extends React.Component {
                 username: '',
                 password: ''
             },
-            message: ''
+            message: '',
+            isLoading: false
         }
         this.axios = {};
         this.handleLogin = this.handleLogin.bind(this)
@@ -20,6 +22,7 @@ export default class extends React.Component {
     async handleLogin (e) {
         e.preventDefault()
         let response = {}
+        this.setState({isLoading:true})
         try{
             response = await this.axios({
                 method: 'post',
@@ -38,9 +41,10 @@ export default class extends React.Component {
         }catch(e){
             response.status = 404
             response.data = {}
-            this.setState({message:'username or password is wrong'})
+            this.setState({message:'username or password is wrong',isLoading:false})
         }
         if(response.status == 200){
+            this.setState({isLoading:false})
             Router.push('/user')
         }
     }
@@ -96,6 +100,11 @@ export default class extends React.Component {
                                     <Row>
                                         <Col style={{ textAlign: 'center', backgroundColor: '#f7f7f7' }}>
                                             <Button color="primary" onClick={this.handleLogin} size="lg" block>Sign in</Button>
+                                            <center>
+
+                                             {this.state.isLoading ? <ReactLoading type={'bars'} color={'#0091ac'} /> :''}
+
+                                            </center>
                                         </Col>
                                     </Row>
                                 </div>

@@ -80,7 +80,7 @@ export default class NavBar extends React.Component {
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ left: '-103px' }} >
                     <a className="dropdown-item" onClick={() => {Router.push('/user')}}>My Profile</a>
                     <div className="dropdown-divider" />
-                    <a className="dropdown-item" onClick={()=> localStorage.clear()}>Log Out</a>
+                    <a className="dropdown-item" onClick={()=> {localStorage.clear()}}>Log Out</a>
                   </div>
                 </div>
 
