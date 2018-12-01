@@ -28,7 +28,6 @@ export default class Curriculum extends React.Component {
             response = await this.axios.get('/curriculums')
         }catch(err){}
         if(errorChecker(response)){
-            console.log(response)
             this.setState({
                 curriculum:response.data,
                 isLoading:false

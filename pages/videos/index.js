@@ -4,7 +4,7 @@ import Cardlist from '../../components/cardlist'
 import { Breadcrumb, BreadcrumbItem,Button,Row,Col } from 'reactstrap';
 import { withRouter } from 'next/router'
 import Router from 'next/router'
-import {videoService , subjectService} from '../../util/axios'
+import {videoService , subjectService, errorChecker} from '../../util/axios'
 import Spiner from '../../components/loadingcomponent'
 
 let subjectTitle = ''
@@ -34,26 +34,30 @@ let subjectTitle = ''
             token
         })
         this.axios  = videoService(token)
-        let {data} = await this.axios.get(`/subject/${subjectId}/videos`)
-        await this.setState({videoList:data})
-        let subjectTitle = await data[0].videoName
-        await this.setState({videoTitle:subjectTitle,isLoading:false})
+        let response = {}
+        try{
+        response = await this.axios.get(`/subject/${subjectId}/videos`)
+        }catch(err){}
+        if(errorChecker(response)){
+            await this.setState({videoList:response.data})
+        }
         await this.getSubjectDetail()
-        console.log('subtect')
-        console.log(this.state)
     }
 
     async getSubjectDetail() {
         const {router} = this.props
         let subjectId = router.query.subject_id
         this.axios = subjectService(this.state.token)
-        let {data} = await this.axios.get(`/subject/${subjectId}`)
-        this.setState({
-            subject:data
-        })
-        console.log('subject')
-        console.log(data)
-
+        let response = {}
+        try{
+            response = await this.axios.get(`/subject/${subjectId}`)
+        }catch(err){}
+        if(errorChecker(response)){
+            this.setState({
+                subject:response.data,
+                isLoading:false
+            })
+        }
     }
 
     goToMaterial() {
