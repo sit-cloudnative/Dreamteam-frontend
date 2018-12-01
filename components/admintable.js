@@ -17,7 +17,7 @@ export default class extends React.Component {
     await this.setState({
       courseName: this.props.courseName
     })
-    const token = localStorage.getItem("token") || ''
+    const token = await localStorage.getItem("token")
     this.axios = materialService(token)
     const { data } = await this.axios.get(`/files/${this.props.courseName}`)
     this.setState({

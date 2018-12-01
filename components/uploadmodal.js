@@ -39,8 +39,8 @@ class UploadModal extends React.Component {
         })
         let formData = new FormData()
         formData.append('file', this.state.material)
-
-        this.axios = materialService('')
+        let token = await localStorage.getItem('token')
+        this.axios = materialService(token)
         const { data } = await this.axios.post(`/file/${this.props.courseName}`, 
             formData, {
                 headers: {
