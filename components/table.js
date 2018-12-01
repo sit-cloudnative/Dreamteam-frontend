@@ -1,8 +1,43 @@
 import React from 'react';
 import { Table } from 'reactstrap';
+import { materialService } from '../util/axios'
+import moment from 'moment'
 
-export default class Example extends React.Component {
+export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      materials: [],
+      courseName: ''
+    }
+    this.axios = {}
+  }
+  async componentDidMount() {
+    await this.setState({
+      courseName: this.props.courseName
+    })
+    const token = localStorage? localStorage.getItem("token"): ''
+    this.axios = materialService(token)
+    const { data } = await this.axios.get(`files/${this.props.courseName}`)
+    this.setState({
+      materials: data
+    })
+  }
+  onDownload(id) {
+    const url = 'http://localhost:8080/'
+    window.open(url+`file/${id}`)
+  }
+
   render() {
+    const materials = this.state.materials.map((material, index) => {
+      return (
+        <tr key={material.id} onClick={() => {this.onDownload(material.id)}}>
+          <th scope="row">{index+1}</th>
+          <td>{material.fileName}</td>
+          <td>{moment(material.createdAt).format('DD-MM-YYYY HH:mm')}</td>
+        </tr>
+      )
+    })
     return (
       <Table striped>
         <thead>
@@ -13,21 +48,7 @@ export default class Example extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>INT final score</td>
-            <td>25 Nov 2018 10:30</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>LAB hamberger</td>
-            <td>25 Nov 2018 10:45</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>LAB xd tools</td>
-            <td>2 Dec 2018 10:05</td>
-          </tr>
+          {materials}
         </tbody>
       </Table>
     );
