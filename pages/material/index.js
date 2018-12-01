@@ -69,7 +69,7 @@ class Index extends React.Component{
                     
                 </div>
             </div>
-            <div className="container">
+            <div className="container" style={{paddingBottom: '300px'}}>
                 {
                     (this.hasStorage())?
                         (localStorage.getItem("role") && localStorage.getItem("role") == 'admin')?
