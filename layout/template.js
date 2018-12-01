@@ -25,7 +25,7 @@ export default class Template extends React.Component{
       <div>
         <Meta />
         <Navbar/>
-        <div style={{padding:'8px',marginTop:'55px',backgroundColor:'#f7f7f7'}}>
+        <div style={{backgroundColor:'#f7f9fb'}}>
           { this.props.children }
         </div>
         <Footer />
