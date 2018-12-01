@@ -47,5 +47,7 @@ export const errorChecker = (response) => {
     localStorage.clear
     Router.push('/login')
     return false
+  }else if(typeof window !== 'undefined'){
+    Router.push('/oops')
   }
 }
