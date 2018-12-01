@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardBody, Button, CardTitle, CardText, CardImg } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import ReactPlayer from 'react-player'
-import {videoService} from '../util/axios'
+import {videoService, errorChecker} from '../util/axios'
 import { withRouter } from 'next/router'
 
 
@@ -10,23 +10,27 @@ class VideoCard extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            video: {}
+            video: {},
+            isLoading: true
         }
         this.axios = {}
     }
 
     async componentDidMount(){
-        console.log(this.props.videoId)
         let targetVideo = this.props.videoId
         let token = localStorage.getItem('token')
         this.axios = videoService(token)
-        let {data} = await this.axios.get(`https://dreamteam-videoservice.mybluemix.net/video/${targetVideo}`)
-        console.log('**********************targetVideo******************')
-        console.log(targetVideo)
-        console.log(data)
-        this.setState({
-            video: data
-        })
+        let response = {}
+        try{
+            response = await this.axios.get(`https://dreamteam-videoservice.mybluemix.net/video/${targetVideo}`)
+
+        }catch(err){}
+        if(errorChecker(response)){
+            this.setState({
+                video: response.data,
+                isLoading:false
+            })
+        }
         console.log(this.state.video)
     }
 
