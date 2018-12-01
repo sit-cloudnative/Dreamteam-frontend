@@ -1,12 +1,25 @@
 import React from 'react'
 import VideoDetail from '../../components/videodetail'
-import NavBar from '../../components/navbar'
+import Template from '../../layout/template'
+import { withRouter } from 'next/router'
 
-export default class video extends React.Component {
+class Video extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            targetVideo: '',
+            test: 'test'
+        }
+    }
+
+    componentDidMount(){
+    }
+
     render() {
-        return (<div>
-            <NavBar></NavBar>
-            <VideoDetail></VideoDetail>
-        </div>)
+        return (
+        <Template>
+            <VideoDetail videoId={this.props.router.query.video_id}/>
+        </Template>)
     }
 }
+export default withRouter(Video)

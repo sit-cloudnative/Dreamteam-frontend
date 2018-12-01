@@ -1,12 +1,14 @@
 import React from 'react'
 import Curriculum from '../../components/curriculum'
 import NavBar from '../../components/navbar'
+import Template from '../../layout/template'
+
 
 export default class video extends React.Component {
+
     render() {
-        return (<div>
-            <NavBar></NavBar>            
+        return (<Template>
             <Curriculum></Curriculum>
-        </div>)
+        </Template>)
     }
 }

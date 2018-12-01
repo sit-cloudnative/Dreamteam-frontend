@@ -1,19 +1,39 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
+import Router from 'next/router'
+/**
+ * 
+ * @param {*} props 
+ * lecturer: "Siam Yamsaengsung"
+videoId: 8282
+videoName: "INT 101 INFORMATION TECHNOLOGY FUNDAMENTAL G.2"
+videoThumbnail: "https://ngelearning.sit.kmutt.ac.th/api/video_image?id=8282"
+ */
 
-const SubjectCard = (props) => {
+const SubjectCard = ({ video }) => {
+
+  const redirectToVideo = (targetVideo) => {
+    console.log(targetVideo)
+    Router.push({
+      pathname: '/video',
+      query: { video_id: targetVideo }
+    })
+  }
+
   return (
     <div>
-      <Card>
-        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-        <CardBody>
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>ACHARA TRAN-U-RAIKUL</CardSubtitle>
-          <CardText>28 NOVEMBER 2018</CardText>
-          <Button>Button</Button>
-        </CardBody>
-      </Card>
+      <a onClick={() => redirectToVideo(video.videoId)}>
+        <Card className="videoCard" style={{ marginBottom: '24px', borderRadius: '10px 10px 10px 10px', borderColor: '#f7f7f7' }}>
+          <CardImg top width="100%" src={video.videoThumbnail} alt="Card image cap" style={{ borderRadius: '10px 10px 0% 0%' }} />
+          <CardBody>
+            <CardSubtitle>{video.lecturer}</CardSubtitle>
+            <CardText>28 November 2018</CardText>
+          </CardBody>
+        </Card>
+      </a>
     </div>
   );
 };

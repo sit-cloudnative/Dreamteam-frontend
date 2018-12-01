@@ -1,49 +1,75 @@
 import React from 'react';
 import { Table ,Button  } from 'reactstrap';
+import { materialService } from '../util/axios'
+import DeleteMaterialModal from './deleteMaterialModal'
+import moment from 'moment'
 
-export default class Example extends React.Component {
+export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      materials: [],
+      courseName: ''
+    }
+    this.axios = {}
+  }
+  async componentDidMount() {
+    await this.setState({
+      courseName: this.props.courseName
+    })
+    const token = localStorage.getItem("token") || ''
+    this.axios = materialService(token)
+    console.log(this.state.courseName)
+    const { data } = await this.axios.get(`/files/${this.props.courseName}`)
+    console.log(data)
+    this.setState({
+      materials: data
+    })
+  }
+  async onDownload(id, name) {
+    const token = localStorage.getItem("token") || ''
+    this.axios = materialService(token)
+    const { data } = await this.axios.get(`/file/${id}`,
+        {
+            responseType: 'arraybuffer',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            }
+        })
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', name);
+    document.body.appendChild(link);
+    link.click();
+  }
+
   render() {
+    const materials = this.state.materials.map((material, index) => {
+      return (
+        <tr key={material.id} style={{cursor: 'pointer'}}>
+          <td scope="row" onClick={() => {this.onDownload(material.id, material.fileName)}} >{index+1}</td>
+          <td onClick={() => {this.onDownload(material.id, material.fileName)}} >{material.fileName}</td>
+          <td onClick={() => {this.onDownload(material.id, material.fileName)}} >{moment(material.createdAt).format('DD-MM-YYYY HH:mm')}</td>
+          <td>
+            <DeleteMaterialModal material={material}/>
+          </td>
+        </tr>
+      )
+    })
     return (
       <Table striped>
         <thead>
           <tr>
             <th>#</th>
-            <th>Materail</th>
+            <th>Material</th>
             <th>Create At</th>
-            <th>actions</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>INT final score</td>
-            <td>25 Nov 2018 10:30</td>
-            <td>
-              <Button color="danger">
-                <i className="fas fa-trash-alt" style={{color:'white'}}></i>
-              </Button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>LAB hamberger</td>
-            <td>25 Nov 2018 10:45</td>
-            <td>
-              <Button color="danger">
-                <i className="fas fa-trash-alt" style={{color:'white'}}></i>
-              </Button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>LAB xd tools</td>
-            <td>2 Dec 2018 10:05</td>
-            <td>
-              <Button color="danger">
-                <i className="fas fa-trash-alt" style={{color:'white'}}></i>
-              </Button>
-            </td>
-          </tr>
+          {materials}
         </tbody>
       </Table>
     );
