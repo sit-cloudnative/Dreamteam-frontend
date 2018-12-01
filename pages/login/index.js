@@ -35,6 +35,7 @@ export default class extends React.Component {
             })
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('profileId', response.data.username)
+            localStorage.setItem('role', response.data.role)
         }catch(e){
             response.status = 404
             response.data = {}

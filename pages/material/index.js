@@ -1,5 +1,6 @@
 import React from 'react'
 import AdminTable from '../../components/admintable'
+import Table from '../../components/table'
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Template from '../../layout/template'
 import UploadModal from '../../components/uploadmodal'
@@ -52,11 +53,25 @@ class Index extends React.Component{
             <h2>Material</h2>
             <div className='row' style={{paddingBottom:'22px'}}>
                 <div className='col-2 offset-10'>
-                    <UploadModal courseName={this.state.courseName}/>
+                    {
+                        (localStorage)?
+                            (localStorage.getItem("role") && localStorage.getItem('role') == 'admin')?
+                                <UploadModal courseName={this.state.courseName}/>:
+                                '':
+                            ''
+                    }
+                    
                 </div>
             </div>
             <div className="container">
-                <AdminTable courseName={this.state.courseName}/>
+                {
+                    (localStorage)?
+                        (localStorage.getItem("role") && localStorage.getItem("role") == 'admin')?
+                            <AdminTable courseName={this.state.courseName}/>:
+                            <Table courseName={this.state.courseName}/>:
+                        ''
+                }
+                
             </div>
         </Template>)
     }
