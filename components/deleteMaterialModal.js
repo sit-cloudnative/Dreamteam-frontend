@@ -23,7 +23,7 @@ class ModalExample extends React.Component {
         this.setState({
             isLoad: true
         })
-        const token = ''
+        const token = localStorage.getItem('token') || ''
         this.axios = materialService(token)
         const { data } = await this.axios.delete(`/file/${id}`)
         console.log(data)

@@ -1,10 +1,16 @@
 import React from 'react'
-
-export default class Oops extends React.Component{
+import { Card, Button, CardTitle, CardText } from 'reactstrap';
+export default class Oops extends React.Component {
     render() {
-        return(
+        const cardStyle = {
+            marginTop: '300px',
+            textAlign:'center'
+        };
+        return (
             <div>
-                <h1>Oops ! Something went wrong please try agin later</h1>
+                <Card body inverse color="danger" style={cardStyle}>
+                    <CardTitle>Oops ! Something went wrong please try again later</CardTitle>
+                </Card>
             </div>
         )
     }
