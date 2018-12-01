@@ -39,7 +39,8 @@ class VideoCard extends React.Component{
             width:  '585px',
             height: 'auto',
             marginLeft: '25px',
-            marginTop: '5px'
+            marginTop: '5px',
+            
         };
         const videoStyle2 = {
             height: '300px',
@@ -49,7 +50,8 @@ class VideoCard extends React.Component{
     
         };
         const cardStyle = {
-            marginTop: '100px'
+            marginTop: '100px',
+            webkitBoxShadow: '2px 3px 5px 0px rgba(0,0,0,0.1)', mozBoxShadow: '2px 3px 5px 0px rgba(0,0,0,0.1)',boxShadow: '2px 3px 5px 0px rgba(0,0,0,0.1)'
         };
         const cardtitleStyle = {
             marginTop: '10px',
