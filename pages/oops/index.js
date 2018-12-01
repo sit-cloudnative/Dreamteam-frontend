@@ -10,12 +10,14 @@ export default class Oops extends React.Component {
             textAlign: 'center',
             width: '130px',
             marginLeft: '670px'
+
+
         };
         return (
             <div>
                 <Card body inverse color="danger" style={cardStyle}>
                     <CardTitle>Oops ! Something went wrong please try again later</CardTitle>
-                    <Button color="secondary" style={buttonStyle}>Back to home</Button>
+                    <Button style={buttonStyle} className="backToHome" block>Back to home</Button>
 
                 </Card>
             </div>
