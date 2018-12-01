@@ -16,10 +16,6 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href={`${this.props.__NEXT_DATA__.assetPrefix}/_next/static/style.css`} />
         </Head>
         <style jsx global>{`
-          body { 
-            background-color: #000000;
-            font: 11px menlo;
-          }
           .navbar {
             color: #F7F9FB;
             background-color: #31708E;
@@ -32,7 +28,8 @@ export default class MyDocument extends Document {
             zIndex: 10;
           }
           .navbar a {
-            border-radius: 20%;           
+            border-radius: 20%;   
+            cursor: pointer;        
           }
           .navbar a:hover {
             background: #5085A5;
@@ -97,12 +94,12 @@ export default class MyDocument extends Document {
           -webkit-transform: scale(1);
           transform: scale(1); 
         }
-        div.footer {
+        .footer {
           padding-top: 5px;
-          background-color: #31708E;
-          height: 60px;
+          background-color: #ffffff;
+          height: 68px;
           text-align: center;
-          color: #F7F9FB;
+          color: #31708E;
         }
         `}
         </style>

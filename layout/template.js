@@ -5,29 +5,30 @@ import React from 'react'
 import Router from 'next/router'
 // import ErrorPage from '../pages/_error'
 import ErrorPage from '../components/error'
-export default class Template extends React.Component{
+export default class Template extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let token = localStorage.getItem('token')
-    if(token == null ){
+    if (token == null) {
       Router.push('/login')
-    }else if(this.props.statusCode == 404){
+    } else if (this.props.statusCode == 404) {
       return <ErrorPage statusCode={this.props.statusCode} message="error!" />
     }
   }
 
   render() {
-    return(
+    return (
       <div>
         <Meta />
-        <Navbar/>
-        <div style={{backgroundColor:'#f7f9fb', marginBottom:'15px'}}>
-          { this.props.children }
+        <Navbar />
+        <div style={{ backgroundColor: '#f7f9fb', paddingBottom: '20px' }}>
+          {this.props.children}
         </div>
+        <br/>
         <Footer />
       </div>
     )
