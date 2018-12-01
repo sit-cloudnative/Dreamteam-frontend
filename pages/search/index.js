@@ -3,12 +3,15 @@ import Template from '../../layout/template';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Col, Row, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Router, { withRouter } from 'next/router'
 import { subjectService } from '../../util/axios';
+import Spin from '../../components/loadingcomponent'
+import Notfound from '../../components/notfound'
 
 class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            subjects: []
+            subjects: [],
+            isLoading:true
         }
         this.axios = {}
     }
@@ -22,7 +25,8 @@ class Search extends React.Component {
             }
         })
         this.setState({
-            subjects: data
+            subjects: data,
+            isLoading:false
         })
     }
     onSelectSubject(id) {
@@ -57,9 +61,9 @@ class Search extends React.Component {
                             </BreadcrumbItem>
                         </Breadcrumb>
                     </Row>
-                    <Row>
+                    {this.state.isLoading ? <Spin/>: <Row>
                         {searchSubjects}
-                    </Row>
+                    </Row>}
                 </Col>
             </Template>
         )
