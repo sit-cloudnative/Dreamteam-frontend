@@ -71,7 +71,7 @@ let subjectTitle = ''
     render() {
         return (<Template>
             <Breadcrumb style={{backgroundColor:'#f7f7f7'}}>
-                <BreadcrumbItem><a href="#">B.SC.IT</a></BreadcrumbItem>
+                <BreadcrumbItem active><a onClick={() => Router.push('/subject')}>Curriculumn</a></BreadcrumbItem>
                 <BreadcrumbItem>{this.state.subject.subjectCode}</BreadcrumbItem>
             </Breadcrumb>
             <Row style={{textAlign:'center',paddingLeft:'230px'}}>
