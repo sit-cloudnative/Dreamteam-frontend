@@ -43,8 +43,6 @@ export default class extends React.Component {
         }
         if(response.status == 200){
             Router.push('/user')
-        }else if(response.status == 404){
-            console.log('your pass word is not real ')
         }
     }
 
@@ -55,12 +53,6 @@ export default class extends React.Component {
     render() {
         return (
             <div className="container">
-                <Head>
-                    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
-                    <link rel="stylesheet" href="/static/bootstrap.min.css" />
-                    <link href="/static/style.css" rel="stylesheet" />
-
-                </Head>
                 <Row style={{ paddingTop: '-60px', marginBottom: '-80px' }}>
                     <Col sm="12" md={{ size: 6, offset: 3 }} style={{ textAlign: 'center' }}>
                         <Jumbotron style={{ backgroundColor: 'white' }}>

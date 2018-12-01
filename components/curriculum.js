@@ -33,8 +33,6 @@ export default class Curriculum extends React.Component {
                 isLoading:false
             })
         }
-        
-        console.log(this.state.curriculum)
     }
 
     async getSubjectList(targetCurriculumId) {

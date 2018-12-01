@@ -4,7 +4,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -62,9 +61,9 @@ export default class NavBar extends React.Component {
                     <img style={{ borderRadius: '50%', marginTop: '6px' }} src="../../static/images/logo/user-1.png" width="30" height="28" />
                   </a>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ left: '-103px' }} >
-                    <a className="dropdown-item" href="#">My Profile</a>
+                    <a className="dropdown-item" onClick={() => {Router.push('/user')}}>My Profile</a>
                     <div className="dropdown-divider" />
-                    <a className="dropdown-item" href="#">Log Out</a>
+                    <a className="dropdown-item" onClick={()=> localStorage.clear()}>Log Out</a>
                   </div>
                 </div>
 
