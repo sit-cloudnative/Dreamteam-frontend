@@ -27,21 +27,18 @@ class VideoCard extends React.Component {
         try{
             response = await this.axios.get(`/video/${targetVideo}`)
             let courseCode = response.data.videoName.replace(/\W/g, '').substr(0, 6)
-            console.log(courseCode)
             this.axios = subjectService(token)
             const { data } = await this.axios.get(`/subjects`, {
                 params: {
                     keyword: courseCode.trim()
                 }
             })
-            console.log(data)
             this.axios = videoService(token)
             const videos = await this.axios.get(`/subject/${data[0].subjectId}/videos`)
             const nextVideos = videos.data.filter(video => {
                 return video.videoId > response.data.videoId
             })
             const reverseNextVideos = nextVideos.reverse().slice(0, 11)
-            console.log(reverseNextVideos)
             this.setState({
                 nextVideos: reverseNextVideos
             })
@@ -53,11 +50,9 @@ class VideoCard extends React.Component {
                 isLoading: false
             })
         }
-        console.log(this.state.video)
     }
 
     redirectVideo(id) {
-        console.log(id)
         Router.push({
             pathname: '/video',
             query: { video_id: id }
@@ -68,11 +63,8 @@ class VideoCard extends React.Component {
 
     render() {
         const videoStyle = {
-            width: '585px',
             height: 'auto',
-            marginLeft: '75px',
-            marginTop: '5px',
-
+            width: 'auto'
         };
         const videoStyle2 = {
             height: '300px',
@@ -83,6 +75,7 @@ class VideoCard extends React.Component {
         };
         const cardStyle = {
             marginTop: '15px',
+            height: '600px',
             webkitBoxShadow: '2px 3px 5px 0px rgba(0,0,0,0.1)', mozBoxShadow: '2px 3px 5px 0px rgba(0,0,0,0.1)', boxShadow: '2px 3px 5px 0px rgba(0,0,0,0.1)'
         };
         const cardtitleStyle = {
@@ -114,11 +107,10 @@ class VideoCard extends React.Component {
         return(
             <Container fluid>
             <Row>
-                <Col xs="3"></Col>
-                <Col xs="6">
+                <Col xs="9">
                     <Card style={cardStyle}>
                         <CardTitle style={cardtitleStyle}><i className="fas fa-video"></i> {this.state.video.videoName}</CardTitle>
-                        <ReactPlayer width={588} url={this.state.video.videoPath} playing controls style={videoStyle} />
+                        <ReactPlayer url={this.state.video.videoPath} playing controls style={videoStyle} width={1000} height={400}/>
 
                             <CardBody>
                                 <hr />
