@@ -56,7 +56,7 @@ class Index extends React.Component{
                 <BreadcrumbItem active><a onClick={this.onBackToSubject} style={{cursor: 'pointer'}}>{this.state.courseName}</a></BreadcrumbItem>
                 <BreadcrumbItem>Material</BreadcrumbItem>
             </Breadcrumb>
-            <h2>Material</h2>
+            <center><h2>Material</h2></center>
             <div className='row' style={{paddingBottom:'22px'}}>
                 <div className='col-2 offset-10'>
                     {
