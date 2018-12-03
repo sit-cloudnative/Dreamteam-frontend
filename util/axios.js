@@ -47,7 +47,11 @@ export const errorChecker = (response) => {
     localStorage.clear
     Router.push('/login')
     return false
-  }else if(typeof window == 'undefined'){
+  }else if(response.status == 500){
+    Router.push('/oops')
+    return false
+  }
+  else if(typeof window == 'undefined'){
     Router.push('/oops')
   }
 }
